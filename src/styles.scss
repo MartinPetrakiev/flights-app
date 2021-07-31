@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("./assets/nils-nedel-ONpGBpns3cs-unsplash.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    font-family: 'Montserrat', sans-serif;
+    width: 100vw;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px 1px gray;
+    .logo_box {
+        img {
+            height: 80px;
+            width: 80px;
+        }
+        h1 {
+            font-weight: 700;
+        }
+        text-transform: uppercase;
+        margin: 10px 20px;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .link_box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        button {
+            border-radius: 9px;
+            border: none;
+            width: 130px;
+            height: 40px;
+            font-size: 16px;
+            background-color: #415D65;
+            color: white;
+            text-align: center;
+            margin: 10px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 497px) {
+    header {
+        flex-direction: column;
+        height: auto;
+
+        .logo_box {
+            align-self: center;
+            margin-bottom: 0;
+        }
+    }
+
+}
