@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { FormsModule } from '@angular/forms';
 ;
 import { AppComponent } from './app.component';
+import { LandingComponent } from './components/landing/landing.component';
 import { FlightsComponet } from './components/flights/flights.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { EditPanelComponent } from './components/edit-panel/edit-panel.component';
@@ -13,6 +14,7 @@ import { EditPanelComponent } from './components/edit-panel/edit-panel.component
 @NgModule({
   declarations: [
     AppComponent,
+    LandingComponent,
     FlightsComponet,
     AdminComponent,
     EditPanelComponent,
