@@ -1,40 +1,48 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Flight } from '../models/flight.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from "../../environments/environment";
+
+const API_URL = environment.apiURL;
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightsService {
 
-  flights: Flight[] = [
-    {
-      origin: "Miami", destination: 'Chicago', 
-      flightNumber: 345,
-      depart: '2020-02-25T23:18:21.932Z',
-      arrive: '2020-02-25T23:21:21.932Z', 
-      nonstop: true
-    },
-    {
-      origin: "New York", destination: 'Los Angeles', 
-      flightNumber: 432,
-      depart: '2020-05-25T23:18:00.932Z',
-      arrive: '2020-05-25T23:23:21.932Z', 
-      nonstop: false
-    },
-  ];
+  constructor(private http: HttpClient) { }
 
-  constructor() { }
-
-  getFlights() {
-    return this.flights;
-
+  getFlights(orig: string, dest: string): Observable<any> {
+    return this.http.get(`${API_URL}flights/query/${orig}/${dest}`);
+  }
+  getFlightByFlightNumber(number: number): Observable<any> {
+    return this.http.get(`${API_URL}flights/flightnum/${number}`);
   }
 
   postFlight(flight: Flight) {
-
+    return this.http.post(`${API_URL}flights/create`, flight).subscribe(data => {
+      console.log("data posted to server!")
+    })
   }
 
-  deleteFlight(id: number) {
+  getAllFlightsData(): Observable<any> {
+    return this.http.get(`${API_URL}flights/`);
+  }
 
+  getAllOrigins(): Observable<any> {
+    return this.http.get(`${API_URL}flights/cities/origins`);
+  }
+
+  getAllDestinations(): Observable<any> {
+    return this.http.get(`${API_URL}flights/cities/destinations`);
+  }
+
+  updateFlight(flight: Flight) {    
+    return this.http.patch(`${API_URL}flights/${flight.id}/update`, flight)
+  }
+
+  deleteFlight(id: string) {
+    return this.http.delete(`${API_URL}flights/${id}/delete`);
   }
 }

@@ -8,23 +8,19 @@
             <div class="container">
                 <div class="search_pane">
                     <div class="search_box">
-                        <select>
+                        <select [(ngModel)]="selectedOrigin">
                             <option value="" disabled selected>from</option>
-                            <option value="nyc">New York</option>
-                            <option value="london">London</option>
-                            <option value="lax">Los Angeles</option>
+                            <option *ngFor ="let result of filteredOriginList; let i=index" value={{result.origin}} >{{result.origin}}</option>
                         </select>
                     </div>
                     <div class="search_box">
-                        <select>
+                        <select [(ngModel)]="selectedDestination">
                             <option value="" disabled selected>to</option>
-                            <option value="nyc">New York</option>
-                            <option value="london">London</option>
-                            <option value="lax">Los Angeles</option>
+                            <option *ngFor ="let result of filteredDestinationList; let i=index" value={{result.destination}} >{{result.destination}}</option>
                         </select>
                     </div>
                     <div class="search_box">
-                        <button>Go</button>
+                        <button (click)="query()">Go</button>
                     </div>
                 </div>
                 <div class="flight_pane">
@@ -37,10 +33,11 @@
 
                     <div *ngFor="let flight of flights" class="flight_results">
                         <div class="flight_number cell"> {{flight.flightNumber}}</div>
-                        <div class="departs cell"> {{flight.depart | date : 'shortDate' }}</div>
-                        <div class="arrives cell"> {{flight.arrive | date : 'shortDate' }}</div>
+                        <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
+                        <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
                         <div class="nonstop cell"> {{flight.nonstop}}</div>
                     </div>
+
                     <div>
                     </div>
 

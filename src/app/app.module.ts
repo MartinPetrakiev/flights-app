@@ -9,8 +9,8 @@ import { AdminComponent } from './admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     AdminComponent
+    FlightsComponet,
   ],
   imports: [
     BrowserModule,

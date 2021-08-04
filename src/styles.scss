@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Viga:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 body {
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
-    background: url("./assets/nils-nedel-ONpGBpns3cs-unsplash.jpg"); 
+    background: url("./assets/nils-nedel-ONpGBpns3cs-unsplash.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 header {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     width: 100vw;
     height: 100px;
     background-color: white;
@@ -32,7 +34,6 @@ header {
         margin: 10px 20px;
         display: flex;
         align-items: center;
-
     }
 
     .link_box {
@@ -46,16 +47,19 @@ header {
             width: 130px;
             height: 40px;
             font-size: 16px;
-            background-color: #415D65;
+            background-color: #415d65;
             color: white;
             text-align: center;
             margin: 10px;
         }
+        button:hover {
+            cursor: pointer;
+            background-color: #8d9b9f;
+        }
     }
-
 }
 
-@media screen and (max-width: 497px) {
+@media screen and (max-width: 560px) {
     header {
         flex-direction: column;
         height: auto;
@@ -65,5 +69,4 @@ header {
             margin-bottom: 0;
         }
     }
-
 }
