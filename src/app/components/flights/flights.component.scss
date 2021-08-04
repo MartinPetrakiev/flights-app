@@ -1,5 +1,6 @@
-.outer_container{
-  font-family: 'Ubuntu', sans-serif;
+.outer_container {
+  font-family: "Inter", sans-serif;
+  color: white;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -11,20 +12,25 @@
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-  
+    
+
     .top_bar {
       height: 40px;
-      background-color: white;
+      background-color: var(--main);
       width: 100%;
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      span {margin-left: 20px;}
-      
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      span {
+        margin-left: 20px;
+        font-size: 20px;
+      }
     }
-  
+
     .transparent_bg {
-      background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5));
+      background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
       height: auto;
       min-height: 400px;
       width: 100%;
@@ -45,47 +51,55 @@
           height: 80%;
           display: flex;
           flex-direction: row;
-           .search_box {
+          .search_box {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             margin-right: 10px;
             position: relative;
-              select{
-                position: relative;
-                right: 20px;
-                background-color: white; 
-                box-shadow: 2px 2px 2px grey;
-                width: auto;
-                height: 25px;
+            select {
+              position: relative;
+              right: 20px;
+              background-color: var(--main);
+              color: white;
+              box-shadow: 0px 0px 10px 2px grey;
+              width: 150px;
+              height: 30px;
+              font-size: 18px;
+              border-radius: 6px;
+              @media screen and (max-width: 480px) {
                 font-size: 15px;
-                @media screen and (max-width: 480px) {
-                  font-size: 12px;
-                }
               }
             }
+          }
           button {
-            background-color: #415D65;
-            border-radius: 5px;
-            border: none;
-            width: auto;
-            font-size: 16px;
-            padding: 5px;
-            color: white;
+            line-height: 2rem;
+            padding: 0px 1.2rem;
+            font-family: Sora, sans-serif;
+            font-weight: 400;
+            font-size: 1em;
+            color: rgb(255, 255, 255);
+            background-color: #8d9b9f;
+            border: 3px solid var(--main);
+            border-radius: 2rem;
+            display: flex;
+            vertical-align: middle;
           }
 
           button:hover {
             cursor: pointer;
             background-color: #5f919f;
-        }
+          }
         }
 
         .flight_pane {
           margin-top: 10px;
-          background-color: white;
+          background-color: var(--main);
           width: 80%;
           height: 80%;
           padding: 20px;
           box-shadow: 0px 0px 10px 1px gray;
+          border-radius: 6px;
 
           .flight_results {
             display: flex;
@@ -102,17 +116,18 @@
                 display: block;
               }
             }
-        }
-        
-          .flight_headers {
-              display: flex;
-              flex-direction: row;
-              border-bottom: 1px solid #ccc;
-              width: 100%;
           }
-          
+
+          .flight_headers {
+            display: flex;
+            flex-direction: row;
+            border-bottom: 1px solid #ccc;
+            width: 100%;
+          }
+
           .cell {
             flex: 1;
+            padding-top: 5px;
           }
         }
       }
