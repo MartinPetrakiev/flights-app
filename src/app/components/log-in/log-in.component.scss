@@ -1,0 +1,49 @@
+.login_panel {
+    font-family: "Inter", sans-serif;
+    font-size: 1.1em;
+    margin: 10px;
+    color: white;
+    background-color: var(--main);
+    box-shadow: 0px 0px 2px 1px gray;
+    display: flex;
+    flex-direction: column;
+    margin: 15vh auto;
+
+    .inner_container {
+        margin: 0 auto 25px;
+    }
+    h1 {
+        font-family: "Sora", sans-serif;
+        text-align: center;
+    }
+    input {
+        width: 200px;
+    }
+    width: 250px;
+    padding: 5px;
+    border-radius: 5px;
+
+    p {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    button {
+        font-family: "Sora", sans-serif;
+        border-radius: 9px;
+        border: none;
+        height: 40px;
+        font-size: 16px;
+        background-color: #44889d;
+        color: white;
+        text-align: center;
+        margin: 10px;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-color: #8d9b9f;
+    }
+}
+
+

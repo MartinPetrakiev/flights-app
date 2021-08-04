@@ -1,1 +1,11 @@
-<p>log-in works!</p>
+<div class="login_panel">
+    <h1>Login</h1>
+    <div class="inner_container">
+        <p>Email:</p>
+        <input type="text" [(ngModel)]="email">
+        <p>Password:</p>
+        <input type="password" [(ngModel)]="password">
+    </div>
+    <button>Login</button>
+    <button routerLink="/register">Register</button>
+</div>

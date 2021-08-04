@@ -6,8 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor() { }
+  email: string;
+  username: string;
+  password: string;
+  rePassword: string;
+  
+  constructor() { 
+    this.email = '';
+    this.username = '';
+    this.password = '';
+    this.rePassword = '';
+  }
 
   ngOnInit(): void {
   }
