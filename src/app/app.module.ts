@@ -9,6 +9,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { FlightsComponet } from './components/flights/flights.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { EditPanelComponent } from './components/edit-panel/edit-panel.component';
+import { LogInComponent } from './components/log-in/log-in.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { EditPanelComponent } from './components/edit-panel/edit-panel.component
     FlightsComponet,
     AdminComponent,
     EditPanelComponent,
+    LogInComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
