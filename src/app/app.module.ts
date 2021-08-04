@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FlightsComponet } from './components/flights/flights.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { EditPanelComponent } from './components/edit-panel/edit-panel.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AdminComponent } from './components/admin/admin.component';
     AppComponent,
     FlightsComponet,
     AdminComponent,
+    EditPanelComponent,
   ],
   imports: [
     BrowserModule,
