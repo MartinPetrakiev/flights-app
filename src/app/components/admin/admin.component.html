@@ -1,0 +1,21 @@
+<div class="admin_panel">
+    <h1>Add a Flight</h1>
+    <div class="inner_container">
+        <p>Origin:</p>
+        <input type="text" [(ngModel)]="origin">
+        <p>Destination:</p>
+        <input type="text" [(ngModel)]="destination">
+        <p>Flight Number:</p>
+        <input type="number" [(ngModel)]="flightNumber">
+        <p>Depart:</p>
+        <input type="datetime-local" [(ngModel)]="depart">
+        <p>Arrive:</p>
+        <input type="datetime-local" [(ngModel)]="arrive">
+        <div class="checkbox">
+            <p>Nonstop:</p>
+            <input type="checkbox" (click)="toggleNonStop()" name="nonstop">
+        </div>
+    </div>
+    <button (click)="sendFlight()">Create Flight</button>
+    <button routerLink="edit-panel"> Edit Flights </button>
+</div>

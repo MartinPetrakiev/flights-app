@@ -1,22 +1,26 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module'
+import { FormsModule } from '@angular/forms';
+;
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component';
+import { FlightsComponet } from './components/flights/flights.component';
+import { AdminComponent } from './components/admin/admin.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent
     FlightsComponet,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: "en-US" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
