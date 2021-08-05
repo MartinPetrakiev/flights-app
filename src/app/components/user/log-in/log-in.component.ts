@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss']
 })
-export class LogInComponent implements OnInit {
+export class LogInComponent {
   email: string;
   password: string;
   
@@ -14,7 +14,5 @@ export class LogInComponent implements OnInit {
     this.password = '';
    }
 
-  ngOnInit(): void {
-  }
 
 }

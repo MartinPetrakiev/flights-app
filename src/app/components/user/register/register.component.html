@@ -2,14 +2,14 @@
     <h1>Register</h1>
     <div class="inner_container">
         <p>Email:</p>
-        <input type="text" [(ngModel)]="email">
+        <input type="text" name="email">
         <p>Username:</p>
-        <input type="text" [(ngModel)]="username">
+        <input type="text" name="username">
         <p>Password:</p>
-        <input type="password" [(ngModel)]="password">
+        <input type="password" name="password">
         <p>Repeat Password:</p>
-        <input type="password" [(ngModel)]="rePassword">
+        <input type="password" name="repeatPassword">
     </div>
     <button>Register</button>
-    <button routerLink="/log-in">Login</button>
+    <button routerLink="../log-in">Login</button>
 </div>

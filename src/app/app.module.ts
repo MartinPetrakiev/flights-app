@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { FlightsComponet } from './components/flights/flights.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { LogInComponent } from './components/user/log-in/log-in.component';
-import { RegisterComponent } from './components/user/register/register.component';
 import { AdminModule } from './components/admin/admin.module';
+import { UserComponent } from './components/user/user.component';
+import { UserModule } from './components/user/user.module';
 
 
 @NgModule({
@@ -18,15 +18,15 @@ import { AdminModule } from './components/admin/admin.module';
     LandingComponent,
     FlightsComponet,
     AdminComponent,
-    LogInComponent,
-    RegisterComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    AdminModule
+    AdminModule,
+    UserModule
   ],
   bootstrap: [AppComponent]
 })

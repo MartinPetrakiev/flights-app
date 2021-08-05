@@ -1,11 +1,13 @@
 <div class="login_panel">
     <h1>Login</h1>
     <div class="inner_container">
-        <p>Email:</p>
-        <input type="text" [(ngModel)]="email">
-        <p>Password:</p>
-        <input type="password" [(ngModel)]="password">
+        <form action="login">
+            <p>Email:</p>
+            <input type="text" name="email">
+            <p>Password:</p>
+            <input type="password" name="password">
+        </form>
     </div>
     <button>Login</button>
-    <button routerLink="/register">Register</button>
+    <button routerLink="../register">Register</button>
 </div>

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   email: string;
   username: string;
   password: string;
@@ -18,7 +18,5 @@ export class RegisterComponent implements OnInit {
     this.rePassword = '';
   }
 
-  ngOnInit(): void {
-  }
 
 }
