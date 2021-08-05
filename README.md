@@ -16,10 +16,12 @@ Front-End: Angular [docs](https://angular.io/docs).
 # Set up and usage
 
 To start server, from inside the [api dir](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/server)
+Rung following commands in terminal:
 
 **`
 npm install
 `**
+
 **`
 npm start
 `**
@@ -28,10 +30,12 @@ Server starts on http://localhost:3000/
 
 
 To start client side view, form inside the [client dir](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/client)
+Rung following commands in terminal:
 
 **`
 npm install
 `**
+
 **`
 npm start
 `**
