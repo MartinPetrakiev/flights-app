@@ -1,0 +1,60 @@
+<div class="editPanel">
+    <div class="container">
+        <div class="search_pane">
+            <div class="search_box">
+                <select [(ngModel)]="selectedOrigin">
+                    <option value="" disabled selected>from</option>
+                    <option *ngFor="let result of filteredOriginList; let i=index" value={{result.origin}}>
+                        {{result.origin}}</option>
+                </select>
+            </div>
+            <div class="search_box">
+                <select [(ngModel)]="selectedDestination">
+                    <option value="" disabled selected>to</option>
+                    <option *ngFor="let result of filteredDestinationList; let i=index" value={{result.destination}}>
+                        {{result.destination}}</option>
+                </select>
+            </div>
+            <div class="search_box">
+                <button (click)="queryOriginDest()">Go</button>
+            </div>
+            <div class="search_input">
+                <input #flightNumberSearch type="number" placeholder="search by flight number">
+            </div>
+            <div class="search_box">
+                <button (click)="queryFlightNumber(flightNumberSearch.value)">Go</button>
+            </div>
+            <button class="reset_button" (click)="resetFilter()">Reset Filter</button>
+        </div>
+        <table class="flightTable" *ngIf="!loading else loadingMsg">
+            <thead>
+                <tr>
+                    <th>origin</th>
+                    <th>destination</th>
+                    <th>flight #</th>
+                    <th>depart</th>
+                    <th>arrive</th>
+                    <th>nonstop</th>
+                    <th>update</th>
+                    <th>delete</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr *ngFor="let flight of flightList; let i=index">
+                    <td><input [(ngModel)]="flight.origin"></td>
+                    <td><input [(ngModel)]="flight.destination"></td>
+                    <td><input [(ngModel)]="flight.flightNumber"></td>
+                    <td><input [ngModel]="flight.depart | date : 'short'"></td>
+                    <td><input [ngModel]="flight.arrive | date : 'short'"></td>
+                    <td><input [(ngModel)]="flight.nonstop"></td>
+                    <td><button class="update" (click)="updateFlight(flight)">go</button></td>
+                    <td><button class="delete" (click)="deleteFlight(flight)">go</button></td>
+                </tr>
+            </tbody>
+
+        </table>
+        <ng-template #loadingMsg>
+            <div>NO FLIGHTS AVAILABLE YET</div>
+        </ng-template>
+
+    </div>

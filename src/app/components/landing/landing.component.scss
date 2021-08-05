@@ -1,0 +1,50 @@
+.container_wrapper {
+    background-color: #1A1A21;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50%;
+    .container_header {
+        font-family: Sora, sans-serif;
+        font-weight: 600;
+        color: rgb(123, 123, 143);
+        h1 {
+            margin-bottom: 10px;
+        }
+    }
+    .container_description {
+        font-family: Inter, sans-serif;
+        font-weight: 400;
+        color: #7b7b7f;
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+    }
+    button {
+        margin: 10px 30px;
+        height: 3.75rem;
+        line-height: 3.5rem;
+        padding: 0px 1.875rem;
+        font-family: Sora, sans-serif;
+        font-weight: 400;
+        font-size: 1.125em;
+        color: rgb(255, 255, 255);
+        background-color: transparent;
+        border: 3px solid #8d9b9f;
+        border-radius: 2rem;
+        display: flex;
+        vertical-align: middle;
+    }
+
+    button:hover {
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 560px) {
+        width: 100%;
+        border-radius: 0;
+        padding: 0;
+    }
+}
