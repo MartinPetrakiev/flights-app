@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Flight } from '../../models/flight.model';
-import { FlightsService } from '../../services/flights.service';
+import { Flight } from '../../../models/flight.model';
+import { FlightsService } from '../../../services/flights.service';
 
 @Component({
   selector: 'app-edit-panel',
