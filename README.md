@@ -7,8 +7,11 @@ The application has admin interface so registered users can record new flights i
 # Stack
 
 Database: MongoDB,
+
 Server: Node.js + express
+
 Front-End: Angular [docs](https://angular.io/docs).
+
 
 # Set up and usage
 
@@ -16,6 +19,8 @@ To start server, from inside the [api dir](https://github.com/MartinPetrakiev/Fl
 
 **`
 npm install
+`**
+**`
 npm start
 `**
 
@@ -26,6 +31,8 @@ To start client side view, form inside the [client dir](https://github.com/Marti
 
 **`
 npm install
+`**
+**`
 npm start
 `**
 
