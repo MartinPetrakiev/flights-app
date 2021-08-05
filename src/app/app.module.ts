@@ -11,7 +11,6 @@ import { AdminModule } from './components/admin/admin.module';
 import { UserComponent } from './components/user/user.component';
 import { UserModule } from './components/user/user.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +25,7 @@ import { UserModule } from './components/user/user.module';
     HttpClientModule,
     FormsModule,
     AdminModule,
-    UserModule
+    UserModule,
   ],
   bootstrap: [AppComponent]
 })

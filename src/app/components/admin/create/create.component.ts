@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Flight } from 'src/app/models/flight.model';
-import { FlightsService } from 'src/app/services/flights.service';
+import { FlightsService } from '../../flights/service/flights.service';
+
+
 
 @Component({
   selector: 'app-create',
