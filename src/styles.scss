@@ -11,16 +11,11 @@
 body {
     margin: 0;
     padding: 0;
-    width: 100vw;
     height: 100vh;
-    background: url("./assets/nils-nedel-ONpGBpns3cs-unsplash.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 header {
     font-family: "Montserrat", sans-serif;
-    width: 100vw;
     height: 100px;
     background-color: var(--main);
     color: white;
@@ -49,9 +44,9 @@ header {
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        button {
+        a {
             margin: 10px 30px;
-            height: 3rem;
+            height: 2.75rem;
             line-height: 2.75rem;
             padding: 0px 1.5rem;
             font-family: Sora, sans-serif;
@@ -63,12 +58,31 @@ header {
             border-radius: 2rem;
             display: flex;
             vertical-align: middle;
+            text-decoration: none;
         }
-        button:hover {
+        a:hover {
             cursor: pointer;
             background-color: #8d9b9f;
         }
+        .active {
+            background-color: #8d9b9f;
+        }
     }
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("./assets/nils-nedel-ONpGBpns3cs-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+footer {
+    height: 60px;
+    background-color: var(--main);
 }
 
 @media screen and (max-width: 560px) {

@@ -1,6 +1,6 @@
 .editPanel {
     font-family: Helvetica, sans-serif;
-    margin: 10px auto;
+    margin: 20px auto;
     background-color: #ddd;
     border: 1px solid grey;
     box-shadow: 2px 2px 2px;
@@ -17,16 +17,20 @@
     }
     padding: 5px;
     border-radius: 5px;
-
     .flightTable {
+        height: 100px;
         font-size: 15px;
         border-collapse: collapse;
+       
         th {
             text-transform: uppercase;
         }
         td {
             border: 1px solid black;
             padding: 8px;
+        }
+        tbody {
+            overflow-y: scroll;
         }
         @media screen and (max-width: 680px) {
             font-size: 10px;
