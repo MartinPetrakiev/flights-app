@@ -1,0 +1,13 @@
+ Volume in drive D has no label.
+ Volume Serial Number is 8442-4E5F
+
+ Directory of D:\Projects\Flights\flights-angular
+
+05.08.2021 ?.  21:04    <DIR>          .
+05.08.2021 ?.  21:04    <DIR>          ..
+05.08.2021 ?.  20:36                66 .gitattributes
+05.08.2021 ?.  21:04                 0 deleteme.txt
+05.08.2021 ?.  20:36             1 092 LICENSE
+05.08.2021 ?.  20:36                20 README.md
+               4 File(s)          1 178 bytes
+               2 Dir(s)  166 153 465 856 bytes free
