@@ -42,6 +42,11 @@ npm start
 
 App starts on http://localhost:4200/
 
+
+**API**
+[Endpoints](https://example.com/)
+
+
 **Client**
 
 *In code documentation.*
