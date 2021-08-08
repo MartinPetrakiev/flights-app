@@ -9,41 +9,32 @@ import { FlightsService } from '../../flights/service/flights.service';
   styleUrls: ['./edit-panel.component.scss']
 })
 export class EditPanelComponent implements OnInit {
-  origin: string;
-  destination: string;
-  flightNumber: number;
-  depart: string;
-  arrive: string;
-  nonstop: boolean = false;
-  flightList: any;
-  selectedOrigin: string;
-  selectedDestination: string;
-  filteredOriginList: any[];
-  filteredDestinationList: any[];
-  flightNumberSearch: any;
+  flight: Flight = {
+    _id: '',
+    origin: '',
+    destination: '',
+    flightNumber: 0,
+    depart: '',
+    arrive: '',
+    nonstop: false,
+  }
+  flightList: any = [];
+  selectedOrigin: string = '';
+  selectedDestination: string = '';
+  filteredOriginList: any[] = [];
+  filteredDestinationList: any[] = [];
+  flightNumberSearch: any = '';
 
   loading = true;
 
   constructor(private flightsService: FlightsService) {
-    this.origin = '';
-    this.destination = '';
-    this.flightNumber = 0;
-    this.depart = '';
-    this.arrive = '';
-    this.nonstop = false;
-    this.flightList = [];
-    this.selectedOrigin = '';
-    this.selectedDestination = '';
-    this.filteredOriginList = [];
-    this.filteredDestinationList = [];
-    this.flightNumberSearch = '';
   }
 
   ngOnInit(): void {
     this.refresh();
   }
 
-  updateFlight(flight: Flight): void {
+  updateFlight(flight: Flight): void {  
     this.flightsService.updateFlight(flight).subscribe(
       res => {
         if(res) {
@@ -56,7 +47,7 @@ export class EditPanelComponent implements OnInit {
 
   deleteFlight(flight: Flight): void {
     if (window.confirm('are you sure you want to delete this flight? ')) {
-      this.flightsService.deleteFlight(flight.id).subscribe(
+      this.flightsService.deleteFlight(flight._id).subscribe(
         res => {
           if(res) {
             this.refresh();

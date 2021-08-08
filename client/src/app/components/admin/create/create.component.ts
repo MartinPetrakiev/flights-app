@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Flight } from 'src/app/models/flight.model';
 import { FlightsService } from '../../flights/service/flights.service';
 
@@ -11,42 +12,33 @@ import { FlightsService } from '../../flights/service/flights.service';
 })
 export class CreateComponent {
 
-  id: string;
-  origin: string;
-  destination: string;
-  flightNumber: number;
-  depart: string;
-  arrive: string;
-  nonstop: boolean = false;
-  flightList: any[];
-
+  flight: Flight = {
+    _id: '',
+    origin: '',
+    destination: '',
+    flightNumber: 0,
+    depart: '',
+    arrive: '',
+    nonstop: false,
+  }
+  flightList: string[] = [];
+  errors: string[] | string = '';
 
   constructor(private flightService: FlightsService) {
-    this.id = '';
-    this.origin = '';
-    this.destination = '';
-    this.flightNumber = 0;
-    this.depart = '';
-    this.arrive = '';
-    this.nonstop = false;
-    this.flightList = [];
-  }
-  toggleNonStop() {
-    this.nonstop = !this.nonstop;
   }
 
-  sendFlight() {
-    const flight: Flight = {
-      id: this.id,
-      origin: this.origin,
-      destination: this.destination,
-      flightNumber: this.flightNumber,
-      depart: this.depart,
-      arrive: this.arrive,
-      nonstop: this.nonstop
-    }
-    this.flightService.postFlight(flight);
-
+  sendFlight(form: NgForm) {   
+    this.flight = form.control.value;
+    this.flight.nonstop = !!this.flight.nonstop
+    this.flightService.postFlight(this.flight).subscribe(
+      res => {
+        console.log('new flight added', res);
+        form.reset();
+      },
+      err => console.log(err)
+    );  
+    
+       
   }
 
 }

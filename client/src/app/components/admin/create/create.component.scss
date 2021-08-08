@@ -16,6 +16,15 @@
     .inner_container {
         margin: 10px auto;
     }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        button {
+            margin-top: 25px;
+        }
+    }
+
     h1 {
         font-family: "Sora", sans-serif;
         text-align: center;
@@ -26,10 +35,6 @@
     p {
         font-size: 15px;
         margin-bottom: 5px;
-    }
-
-    form {
-        margin: 0 auto;
     }
 
     .checkbox {
@@ -43,6 +48,11 @@
         input {
             width: 20px;
         }
+    }
+
+    .edit_redirect {
+        width: 188px;
+        align-self: center;
     }
 
     button {

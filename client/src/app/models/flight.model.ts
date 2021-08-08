@@ -1,9 +1,9 @@
 export interface Flight {
-    id: string;
+    _id: string;
     origin: string;
     destination: string;
     flightNumber: number;
     depart: string;
     arrive: string;
-    nonstop: boolean
+    nonstop: boolean;
 };
