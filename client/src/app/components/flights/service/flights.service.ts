@@ -21,10 +21,8 @@ export class FlightsService {
     return this.http.get(`${API_URL}flights/flightnum/${number}`);
   }
 
-  postFlight(flight: Flight) {
-    return this.http.post(`${API_URL}flights/create`, flight).subscribe(data => {
-      console.log("data posted to server!")
-    })
+  postFlight(flight: Flight): Observable<any> {
+    return this.http.post(`${API_URL}flights/create`, flight, { withCredentials: true });
   }
 
   getAllFlightsData(): Observable<any> {
@@ -39,8 +37,8 @@ export class FlightsService {
     return this.http.get(`${API_URL}flights/cities/destinations`);
   }
 
-  updateFlight(flight: Flight) {    
-    return this.http.patch(`${API_URL}flights/${flight.id}/update`, flight)
+  updateFlight(flight: Flight) {
+    return this.http.patch(`${API_URL}flights/${flight._id}/update`, flight, { withCredentials: true });
   }
 
   deleteFlight(id: string) {

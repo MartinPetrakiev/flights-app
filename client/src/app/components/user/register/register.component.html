@@ -1,15 +1,20 @@
 <div class="register_panel">
     <h1>Register</h1>
     <div class="inner_container">
-        <p>Email:</p>
-        <input type="text" name="email">
-        <p>Username:</p>
-        <input type="text" name="username">
-        <p>Password:</p>
-        <input type="password" name="password">
-        <p>Repeat Password:</p>
-        <input type="password" name="repeatPassword">
+        <form #form="ngForm" (ngSubmit)="registerUser(form)">
+            <p>Email:</p>
+            <input type="text" name="email" ngModel>
+            <p>Username:</p>
+            <input type="text" name="username" ngModel>
+            <p>Password:</p>
+            <input type="password" name="password" ngModel>
+            <p>Repeat Password:</p>
+            <input type="password" name="repeatPassword" ngModel>
+            <div class="errors">
+                <p>{{errors}}</p>
+            </div>
+            <button>Register</button>
+        </form>
     </div>
-    <button>Register</button>
-    <button routerLink="../log-in">Login</button>
+    <button class="login_redirect" routerLink="../log-in">Login</button>
 </div>
