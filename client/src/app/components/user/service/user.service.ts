@@ -22,4 +22,8 @@ export class UserService {
     return this.http.post(`${API_URL}login`, user, { withCredentials: true });
   }
 
+  logout(): Observable<any> {
+    return this.http.post(`${API_URL}logout`, {}, { withCredentials: true });
+  }
+
 }

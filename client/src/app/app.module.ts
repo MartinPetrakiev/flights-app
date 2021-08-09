@@ -12,6 +12,8 @@ import { UserComponent } from './components/user/user.component';
 import { UserModule } from './components/user/user.module';
 import { LocalStorage } from './injection-tokens';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { AuthService } from './auth/auth.service';
+import { UserService } from './components/user/service/user.service';
 
 
 @NgModule({
@@ -69,6 +71,8 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
       },
       deps: [PLATFORM_ID]
     },
+    AuthService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,7 @@
   <nav class="link_box">
     <a routerLink="flights" routerLinkActive="active"> Flights </a>
     <a routerLink="admin" routerLinkActive="active"> Admin </a>
+    <a *ngIf="authService.isAuthenticated" (click)="logout()"> Logout </a>
   </nav>
 </header>
 <main>
