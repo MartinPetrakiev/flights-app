@@ -24,7 +24,8 @@
             <div class="search_box">
                 <button (click)="queryFlightNumber(flightNumberSearch.value)">Go</button>
             </div>
-            <button class="reset_button" (click)="resetFilter()">Reset Filter</button>
+            <button class="util_button" (click)="resetFilter()">Reset Filter</button>
+            <button class="util_button" routerLink="../create">&lt; Back to create</button>
         </div>
         <table class="flightTable" *ngIf="!loading else loadingMsg">
             <thead>

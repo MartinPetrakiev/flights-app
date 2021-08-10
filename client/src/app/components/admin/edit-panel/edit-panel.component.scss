@@ -60,10 +60,11 @@
     justify-content: center;
     .search_pane {
         margin-top: 20px;
-        width: 80%;
+        width: 90%;
         height: 80%;
         display: flex;
         flex-direction: row;
+        align-items: center;
         margin-bottom: 20px;
         .search_box {
             display: flex;
@@ -91,7 +92,7 @@
             height: 25px;
             font-size: 15px;
         }
-        .reset_button {
+        .util_button {
             margin-left: auto;
         }
         button {
@@ -110,15 +111,19 @@
         }
         @media screen and (max-width: 700px) {
             flex-direction: column;
+            align-items: unset;
+            width: 90%;
             .search_box {
                 margin: 5px;
             }
-
+            .search_input {
+                margin: 5px;
+            }
             .search_input > input {
-                width: 100%;
+                width: 99%;
                 margin: 0;
             }
-            .reset_button {
+            .util_button {
                 margin: 5px;
             }
         }
