@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/auth/auth.service';
+import { User } from 'src/app/shared/models/user.model';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 
 const API_URL = environment.apiURL;
 

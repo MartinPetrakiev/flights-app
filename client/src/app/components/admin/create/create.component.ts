@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Flight } from 'src/app/models/flight.model';
-import { FlightsService } from '../../flights/service/flights.service';
+import { Flight } from 'src/app/shared/models/flight.model';
+import { FlightsService } from '../../../shared/flights-service/flights.service';
 
 
 

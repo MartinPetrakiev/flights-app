@@ -10,10 +10,10 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AdminModule } from './components/admin/admin.module';
 import { UserComponent } from './components/user/user.component';
 import { UserModule } from './components/user/user.module';
-import { LocalStorage } from './injection-tokens';
+import { LocalStorage } from './shared/injection-tokens';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { AuthService } from './auth/auth.service';
-import { UserService } from './components/user/service/user.service';
+import { AuthService } from './shared/auth/auth.service';
+import { UserService } from './shared/user-service/user.service';
 
 
 @NgModule({
