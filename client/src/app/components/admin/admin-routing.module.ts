@@ -4,6 +4,7 @@ import { AdminComponent } from './admin.component';
 import { CreateComponent } from './create/create.component';
 import { EditPanelComponent } from './edit-panel/edit-panel.component';
 import { AuthGuardService as AuthGuard } from '../../shared/auth/auth-guard.service';
+import { EditComponent } from './edit/edit.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
       {
         path: 'edit-panel', 
         component: EditPanelComponent,
+        canActivate: [AuthGuard] 
+      },
+      {
+        path: 'edit/:id', 
+        component: EditComponent,
         canActivate: [AuthGuard] 
       }
     ]

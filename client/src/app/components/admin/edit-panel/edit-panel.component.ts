@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Flight } from '../../../shared/models/flight.model';
 import { FlightsService } from '../../../shared/flights-service/flights.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class EditPanelComponent implements OnInit {
 
   loading = true;
 
-  constructor(private flightsService: FlightsService) {
+  constructor(private flightsService: FlightsService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,14 +36,7 @@ export class EditPanelComponent implements OnInit {
   }
 
   updateFlight(flight: Flight): void {  
-    this.flightsService.updateFlight(flight).subscribe(
-      res => {
-        if(res) {
-          this.refresh();
-        }
-      },
-      err => console.log('HTTP Error', err),
-      () => console.log('HTTP request completed.'));
+    this.router.navigate([`admin/edit/${flight._id}`]);
   }
 
   deleteFlight(flight: Flight): void {
@@ -67,8 +61,8 @@ export class EditPanelComponent implements OnInit {
   }
 
   queryFlightNumber(flightNumberSearch: string): void {
-    this.flightsService.getFlightByFlightNumber(Number(flightNumberSearch)).subscribe(data => {
-      this.flightList = [data];
+    this.flightsService.getFlightByFlightNumber(flightNumberSearch).subscribe(data => {
+      this.flightList = data;
     })
   }
 

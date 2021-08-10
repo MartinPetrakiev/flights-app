@@ -1,0 +1,23 @@
+<div class="edit_form">
+    <h1>Edit Flight</h1>
+    <div class="inner_container">
+        <form #form="ngForm" (ngSubmit)="update(form)">
+            <p>Origin:</p>
+            <input type="text" name="origin" value="{{flight.origin}}" ngModel>
+            <p>Destination:</p>
+            <input type="text" name="destination" value="{{flight.destination}}" ngModel>
+            <p>Flight Number:</p>
+            <input type="number" name="flightNumber" value="{{flight.flightNumber}}" ngModel>
+            <p>Depart:</p>
+            <input type="datetime-local" name="depart" value="{{flight.depart}}" ngModel>
+            <p>Arrive:</p>
+            <input type="datetime-local" name="arrive" value="{{flight.arrive}}" ngModel>
+            <div class="checkbox">
+                <p>Nonstop:</p>
+                <input type="checkbox" name="nonstop" checked="{{flight.nonstop}}" ngModel>
+            </div>
+            <button>Edit Flight</button>
+        </form>
+    </div>
+    <button class="edit_redirect" routerLink="../../edit-panel">Back to Edit Panel</button>
+</div>

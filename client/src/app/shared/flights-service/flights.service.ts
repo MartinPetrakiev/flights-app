@@ -17,8 +17,13 @@ export class FlightsService {
   getFlights(orig: string, dest: string): Observable<any> {
     return this.http.get(`${API_URL}flights/query/${orig}/${dest}`);
   }
-  getFlightByFlightNumber(number: number): Observable<any> {
-    return this.http.get(`${API_URL}flights/flightnum/${number}`);
+
+  getFlightById(id: string): Observable<any> {
+    return this.http.get(`${API_URL}flights/${id}`, { withCredentials: true });
+  }
+
+  getFlightByFlightNumber(flightNumber: string): Observable<any> {
+    return this.http.get(`${API_URL}flights/flightnum/${flightNumber}`, { withCredentials: true });
   }
 
   postFlight(flight: Flight): Observable<any> {
@@ -42,6 +47,6 @@ export class FlightsService {
   }
 
   deleteFlight(id: string) {
-    return this.http.delete(`${API_URL}flights/${id}/delete`);
+    return this.http.delete(`${API_URL}flights/${id}/delete`, { withCredentials: true });
   }
 }

@@ -7,13 +7,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule } from '@angular/forms';
+import { EditComponent } from './edit/edit.component';
 
 
 
 @NgModule({
   declarations: [
     CreateComponent,
-    EditPanelComponent
+    EditPanelComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

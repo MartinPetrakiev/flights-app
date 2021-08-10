@@ -25,7 +25,7 @@ export class FlightsComponet implements OnInit {
   }
 
   ngOnInit(): void {
-    this.flightsService.getAllOrigins().subscribe(data =>{
+    this.flightsService.getAllOrigins().subscribe(data =>{     
       this.filteredOriginList = data;
     }); 
 

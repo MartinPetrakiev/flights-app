@@ -1,14 +1,14 @@
 const { userModel, flightModel } = require('../models');
 
 function getFlightOrigins(req, res, next) {
-    return flightModel.find().select('origin -_id')
+    return flightModel.find().distinct('origin')
         .then(origins => {
             res.status(200).json(origins);
         });
 }
 
 function getFlightsDestinations(req, res, next) {
-    return flightModel.find().select('destination -_id')
+    return flightModel.find().distinct('destination')
         .then(departures => {
             res.status(200).json(departures);
         });
@@ -43,8 +43,8 @@ function getFlightById(req, res, next) {
 }
 
 function getByFlightNumber(req, res, next) {
-    const { flightNumber } = req.params;
-    return flightModel.find({ flightNumber })
+    let { flightNumber } = req.params;
+    return flightModel.find({ flightNumber: +flightNumber })
         .then(flight => {
             res.status(200).json(flight);
         });
@@ -79,6 +79,7 @@ function deleteFlight(req, res, next) {
 function paptchEditFlight(req, res, next) {
     const { flightId } = req.params;
     const flightData = req.body;
+    console.log(flightData);
 
     // if the userId is not the same as this one of the flights, the flight will not be updated
     flightModel.findOneAndUpdate({ _id: flightId }, flightData, { new: true })

@@ -3,15 +3,41 @@
     <div class="inner_container">
         <form #form="ngForm" (ngSubmit)="registerUser(form)">
             <p>Email:</p>
-            <input type="text" name="email" ngModel>
+            <input type="text" name="email" #emailInput="ngModel" ngModel required email>
+            <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="validation_errors">
+                <div *ngIf="emailInput.errors?.required">
+                    Email is required.
+                </div>
+                <div *ngIf="emailInput.errors?.email">
+                    Email is not valid.
+                </div>
+            </div>
             <p>Username:</p>
-            <input type="text" name="username" ngModel>
+            <input type="text" name="username" #usernameInput="ngModel" ngModel required minlength="5">
+            <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="validation_errors">
+                <div *ngIf="usernameInput.errors?.required">
+                    Username is required.
+                </div>
+                <div *ngIf="usernameInput.errors?.minlength">
+                    Username should be at least 5 characters.
+                </div>
+            </div>
             <p>Password:</p>
-            <input type="password" name="password" ngModel>
+            <input type="password" name="password" #passwordInput="ngModel" ngModel required minlength="5">
+            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="validation_errors">
+                <div *ngIf="passwordInput.errors?.required">
+                    Password is required.
+                </div>
+                <div *ngIf="passwordInput.errors?.minlength">
+                    Password should be at least 5 characters.
+                </div>
+            </div>
             <p>Repeat Password:</p>
-            <input type="password" name="repeatPassword" ngModel>
-            <div class="errors">
-                <p>{{errors}}</p>
+            <input type="password" name="repeatPassword" ngModel required>
+            <div *ngIf="errors.length" class="errors">
+                <ul *ngFor="let error of errors">
+                    <li>{{error}}</li>
+                </ul>
             </div>
             <button>Register</button>
         </form>

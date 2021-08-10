@@ -4,15 +4,15 @@
             <div class="search_box">
                 <select [(ngModel)]="selectedOrigin">
                     <option value="" disabled selected>from</option>
-                    <option *ngFor="let result of filteredOriginList; let i=index" value={{result.origin}}>
-                        {{result.origin}}</option>
+                    <option *ngFor="let result of filteredOriginList; let i=index" value={{result}}>
+                        {{result}}</option>
                 </select>
             </div>
             <div class="search_box">
                 <select [(ngModel)]="selectedDestination">
                     <option value="" disabled selected>to</option>
-                    <option *ngFor="let result of filteredDestinationList; let i=index" value={{result.destination}}>
-                        {{result.destination}}</option>
+                    <option *ngFor="let result of filteredDestinationList; let i=index" value={{result}}>
+                        {{result}}</option>
                 </select>
             </div>
             <div class="search_box">
@@ -42,12 +42,12 @@
             </thead>
             <tbody> 
                 <tr *ngFor="let flight of flightList; let i=index">
-                    <td><input [(ngModel)]="flight.origin"></td>
-                    <td><input [(ngModel)]="flight.destination"></td>
-                    <td><input [(ngModel)]="flight.flightNumber"></td>
-                    <td><input [ngModel]="flight.depart | date : 'short'"></td>
-                    <td><input [ngModel]="flight.arrive | date : 'short'"></td>
-                    <td><input [(ngModel)]="flight.nonstop"></td>
+                    <td>{{flight.origin}}</td>
+                    <td>{{flight.destination}}</td>
+                    <td>{{flight.flightNumber}}</td>
+                    <td>{{flight.depart | date: 'short'}}</td>
+                    <td>{{flight.arrive | date: 'short'}}</td>
+                    <td>{{flight.nonstop}}</td>
                     <td><button class="update" (click)="updateFlight(flight)">go</button></td>
                     <td><button class="delete" (click)="deleteFlight(flight)">go</button></td>
                 </tr>
