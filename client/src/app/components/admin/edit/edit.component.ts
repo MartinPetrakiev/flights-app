@@ -59,6 +59,7 @@ export class EditComponent implements OnInit {
     this.flightService.updateFlight(flight).subscribe(
       res => {
         console.log('flight updated', res);
+        alert('Flight Updated in database!')
       },
       err => console.log(err)
     );

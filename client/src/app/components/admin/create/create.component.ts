@@ -33,6 +33,7 @@ export class CreateComponent {
     this.flightService.postFlight(this.flight).subscribe(
       res => {
         console.log('new flight added', res);
+        alert('Flight added to database!')
         form.reset();
       },
       err => console.log(err)

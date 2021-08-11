@@ -71,6 +71,13 @@
         cursor: pointer;
         background-color: #8d9b9f;
     }
+
+    .validation_errors {
+        color: red;
+        text-align: center;
+        width: 200px;
+        font-size: 12px;
+    }
 }
 
 
