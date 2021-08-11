@@ -4,7 +4,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
-import {  FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 
@@ -12,7 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     RegisterComponent,
-    LogInComponent
+    LogInComponent,
   ],
   imports: [
     CommonModule,
@@ -20,6 +20,7 @@ import { BrowserModule } from '@angular/platform-browser';
     UserRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
 
   ]
 })

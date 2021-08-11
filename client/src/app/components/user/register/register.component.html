@@ -1,39 +1,51 @@
 <div class="register_panel">
     <h1>Register</h1>
     <div class="inner_container">
-        <form #form="ngForm" (ngSubmit)="registerUser(form)">
+        <form [formGroup]="form" (ngSubmit)="registerUser()">
             <p>Email:</p>
-            <input type="text" name="email" #emailInput="ngModel" ngModel required email>
-            <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="validation_errors">
-                <div *ngIf="emailInput.errors?.required">
-                    Email is required.
-                </div>
-                <div *ngIf="emailInput.errors?.email">
-                    Email is not valid.
-                </div>
-            </div>
+            <input type="text" name="email" formControlName="email">
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p *ngIf="form.get('email')?.errors?.required" class="validation_errors">
+                    Email is required!
+                </p>
+                <p *ngIf="form.get('email')?.errors?.invalidEmail" class="validation_errors">
+                    Email is not valid!
+                </p>
+            </ng-container>
+
             <p>Username:</p>
-            <input type="text" name="username" #usernameInput="ngModel" ngModel required minlength="5">
-            <div *ngIf="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)" class="validation_errors">
-                <div *ngIf="usernameInput.errors?.required">
-                    Username is required.
-                </div>
-                <div *ngIf="usernameInput.errors?.minlength">
+            <input type="text" name="username" formControlName="username">
+            <ng-container *ngIf="form.get('username')?.touched">
+                <p *ngIf="form.get('username')?.errors?.required" class="validation_errors">
+                    Email is required!
+                </p>
+                <p *ngIf="form.get('username')?.errors?.minlength" class="validation_errors">
                     Username should be at least 5 characters.
-                </div>
-            </div>
+                </p>
+            </ng-container>
+
             <p>Password:</p>
-            <input type="password" name="password" #passwordInput="ngModel" ngModel required minlength="5">
-            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="validation_errors">
-                <div *ngIf="passwordInput.errors?.required">
-                    Password is required.
-                </div>
-                <div *ngIf="passwordInput.errors?.minlength">
-                    Password should be at least 5 characters.
-                </div>
-            </div>
+            <input type="password" name="password" formControlName="password">
+            <ng-container *ngIf="form.get('password')?.touched">
+                <p *ngIf="form.get('password')?.errors?.required" class="validation_errors">
+                    Password is required!
+                </p>
+                <p *ngIf="form.get('password')?.errors?.minlength" class="validation_errors">
+                    Password must be at least 5 characters!
+                </p>
+            </ng-container>
+
             <p>Repeat Password:</p>
-            <input type="password" name="repeatPassword" ngModel required>
+            <input type="password" name="repeatPassword" formControlName="repeatPassword">
+            <ng-container *ngIf="form.get('repeatPassword')?.touched">
+                <p *ngIf="form.get('repeatPassword')?.errors?.required" class="validation_errors">
+                    Repeat Password is required!
+                </p>
+                <p *ngIf="form.get('repeatPassword')?.errors?.matching" class="validation_errors">
+                    Repeat Password does not match password!
+                </p>
+            </ng-container>
+
             <div *ngIf="errors.length" class="errors">
                 <ul *ngFor="let error of errors">
                     <li>{{error}}</li>

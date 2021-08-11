@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../../shared/user-service/user.service';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Validation, emailValidator } from 'src/app/shared/validators';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -10,14 +12,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  errors: string[];
+  form: FormGroup;
+  errors: string[] = [];
 
-  constructor(public userService: UserService, public router: Router) {
-    this.errors = [];
+  killSubscription = new Subject();
+
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, emailValidator]],
+      username: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      repeatPassword: ['', [Validators.required]]
+    },
+      {
+        validators: [Validation.match('password', 'repeatPassword')]
+      }
+    );
   }
 
-  registerUser(form: NgForm): void {
-    const user = form.control.value;
+  registerUser(): void {
+    const user = this.form.value;
     this.errors = [];
     this.userService.register(user).subscribe(
       res => {
@@ -26,7 +44,7 @@ export class RegisterComponent {
       },
       err => {
         console.log('register error', err);
-        if(err.error.message === 'Validation Error!') {
+        if (err.error.message === 'Validation Error!') {
           return this.errors = err.error.errors;
         } else {
           return this.errors = ['Something went wrong'];
