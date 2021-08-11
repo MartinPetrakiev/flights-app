@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AdminRoutingModule } from './admin-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 
 
@@ -23,6 +23,7 @@ import { EditComponent } from './edit/edit.component';
     AdminRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class AdminModule { }

@@ -1,20 +1,50 @@
 <div class="edit_form">
     <h1>Edit Flight</h1>
     <div class="inner_container">
-        <form #form="ngForm" (ngSubmit)="update(form)">
+        <form [formGroup]="form" (ngSubmit)="update()">
             <p>Origin:</p>
-            <input type="text" name="origin" value="{{flight.origin}}" ngModel>
+            <input type="text" name="origin" formControlName="origin">
+            <ng-container *ngIf="form.get('origin')?.touched">
+                <p *ngIf="form.get('origin')?.errors?.required" class="validation_errors">
+                    Origin is required!
+                </p>
+            </ng-container>
+
             <p>Destination:</p>
-            <input type="text" name="destination" value="{{flight.destination}}" ngModel>
+            <input type="text" name="destination"  formControlName="destination">
+            <ng-container *ngIf="form.get('origin')?.touched">
+                <p *ngIf="form.get('origin')?.errors?.required" class="validation_errors">
+                    Destination is required!
+                </p>
+            </ng-container>
+
             <p>Flight Number:</p>
-            <input type="number" name="flightNumber" value="{{flight.flightNumber}}" ngModel>
-            <p>Depart:</p>
-            <input type="datetime-local" name="depart" value="{{flight.depart}}" ngModel>
+            <input type="number" name="flightNumber" formControlName="flightNumber">
+            <ng-container *ngIf="form.get('origin')?.touched">
+                <p *ngIf="form.get('origin')?.errors?.required" class="validation_errors">
+                    Flight Number is required!
+                </p>
+            </ng-container>
+
+            <p>Departure:</p>
+            <input type="datetime-local" name="depart" formControlName="depart">
+            <ng-container *ngIf="form.get('origin')?.touched">
+                <p *ngIf="form.get('origin')?.errors?.required" class="validation_errors">
+                    Departure is required!
+                </p>
+            </ng-container>
+
             <p>Arrive:</p>
-            <input type="datetime-local" name="arrive" value="{{flight.arrive}}" ngModel>
+            <input type="datetime-local" name="arrive" formControlName="arrive">
+            <ng-container *ngIf="form.get('origin')?.touched">
+                <p *ngIf="form.get('origin')?.errors?.required" class="validation_errors">
+                    Arrive is required!
+                </p>
+            </ng-container>
+
             <div class="checkbox">
                 <p>Nonstop:</p>
-                <input type="checkbox" name="nonstop" checked="{{flight.nonstop}}" ngModel>
+                <input type="checkbox" name="nonstop" formControlName="nonstop">
             </div>
             <button>Edit Flight</button>
         </form>
