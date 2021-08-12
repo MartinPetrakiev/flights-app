@@ -17,6 +17,13 @@ export class AuthService {
     return this.user!._id!;
   }
 
+  get isAdmin(): boolean {   
+    if(this.user!.hasOwnProperty('admin')) {
+      return !!this.user!.admin;
+    }
+    return false;
+  }
+
   constructor(@Inject(LocalStorage) private localStorage: Window['localStorage']) {
     try {
       const localStorageUser = this.localStorage.getItem('<USER>') || 'ERROR';
@@ -26,11 +33,12 @@ export class AuthService {
     }
   }
 
-  login(id: string, email: string, username: string): void {
+  login(id: string, email: string, username: string, admin: boolean): void {
     this.user = {
       _id: id,
       email,
-      username
+      username,
+      admin
     }
 
     this.localStorage.setItem('<USER>', JSON.stringify(this.user));
