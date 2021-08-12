@@ -6,5 +6,5 @@ export interface Flight {
     depart: string;
     arrive: string;
     nonstop: boolean;
-    userId?: string[];
+    bookedBy?: string[];
 };

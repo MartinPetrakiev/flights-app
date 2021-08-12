@@ -51,9 +51,9 @@ function getUpcomingFlightsOfUser(req, res, next) {
 }
 
 
-function getFlightsByOriginDestination(req, res, next) {
+function getCurrentFlightsByOriginDestination(req, res, next) {
     const { orig, dest } = req.params;
-    flightModel.find({ origin: orig, destination: dest })
+    flightModel.find({ origin: orig, destination: dest, depart: { $gte: new Date() } })
         .sort({ created_at: -1 })
         .then(flights => {
             res.status(200).json(flights);
@@ -144,7 +144,7 @@ module.exports = {
     getUpcomingFlightsOfUser,
     getFlightOrigins,
     getFlightsDestinations,
-    getFlightsByOriginDestination,
+    getCurrentFlightsByOriginDestination,
     getFlightById,
     getByFlightNumber,
     postNewFlight,
