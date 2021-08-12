@@ -22,8 +22,8 @@ export class LogInComponent {
     this.userService.login(user).subscribe(
       res => {
         console.log('user logged-in');
-        this.authService.login(res.email, res.username)
-        this.router.navigate(['/admin/create']);
+        this.authService.login(res._id, res.email, res.username)
+        this.router.navigate(['/user/profile']);
       },
       err => this.errors = err.error.message,
     );

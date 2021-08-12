@@ -6,6 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { ProfileComponent } from './profile/profile.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -13,6 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
   declarations: [
     RegisterComponent,
     LogInComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -20,8 +23,8 @@ import { BrowserModule } from '@angular/platform-browser';
     UserRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    MatTabsModule,
   ]
 })
 export class UserModule { }

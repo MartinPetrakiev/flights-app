@@ -13,6 +13,10 @@ export class AuthService {
     return !!this.user;
   }
 
+  get userId(): string {
+    return this.user!._id!;
+  }
+
   constructor(@Inject(LocalStorage) private localStorage: Window['localStorage']) {
     try {
       const localStorageUser = this.localStorage.getItem('<USER>') || 'ERROR';
@@ -22,8 +26,9 @@ export class AuthService {
     }
   }
 
-  login(email: string, username: string): void {
+  login(id: string, email: string, username: string): void {
     this.user = {
+      _id: id,
       email,
       username
     }

@@ -23,6 +23,33 @@ function getFlights(req, res, next) {
         .catch(next);
 }
 
+function getAllFlightsOfUser(req, res, next) {
+    const { userId } = req.params;
+    flightModel.find({ bookedBy: { $all: [userId] } })
+        .then(flights => {
+            res.status(200).json(flights);
+        })
+        .catch(next);
+}
+
+function getPastFlightsOfUser(req, res, next) {
+    const { userId } = req.params;
+    flightModel.find({ bookedBy: { $all: [userId] }, depart: { $lt: new Date() } })
+        .then(flights => {
+            res.status(200).json(flights);
+        })
+        .catch(next);
+}
+
+function getUpcomingFlightsOfUser(req, res, next) {
+    const { userId } = req.params;
+    flightModel.find({ bookedBy: { $all: [userId] }, depart: { $gte: new Date() } })
+        .then(flights => {
+            res.status(200).json(flights);
+        })
+        .catch(next);
+}
+
 
 function getFlightsByOriginDestination(req, res, next) {
     const { orig, dest } = req.params;
@@ -112,6 +139,9 @@ function bookFlight(req, res, next) {
 
 module.exports = {
     getFlights,
+    getAllFlightsOfUser,
+    getPastFlightsOfUser,
+    getUpcomingFlightsOfUser,
     getFlightOrigins,
     getFlightsDestinations,
     getFlightsByOriginDestination,

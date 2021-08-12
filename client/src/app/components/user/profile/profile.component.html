@@ -1,0 +1,65 @@
+<div class="outer_container">
+
+    <div class="big_container">
+        <div class="top_bar">
+            <span>My Flights History</span>
+        </div>
+        <div class="transparent_bg">
+            <div class="container">
+                <mat-tab-group animationDuration="0ms">
+                    <mat-tab label="Past Flights">
+                        <div class="flight_pane mat-elevation-z4">
+                            <div class="flight_headers">
+                                <div class="flight_number cell"> Flight # </div>
+                                <div class="origin cell">Origin</div>
+                                <div class="destination cell">Destination</div>
+                                <div class="departs cell"> Departs </div>
+                                <div class="arrives cell"> Arrives </div>
+                                <div class="nonstop cell"> Nonstop </div>
+                            </div>
+
+                            <div *ngFor="let flight of pastFlights" class="flight_results">
+                                <div class="flight_number cell"> {{flight.flightNumber}}</div>
+                                <div class="origin cell"> {{flight.origin}}</div>
+                                <div class="destination cell"> {{flight.destination}}</div>
+                                <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
+                                <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
+                                <div class="nonstop cell"> {{flight.nonstop}}</div>
+                            </div>
+
+                            <div>
+                            </div>
+
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Upcoming">
+                        <div class="flight_pane mat-elevation-z4">
+                            <div class="flight_headers">
+                                <div class="flight_number cell"> Flight # </div>
+                                <div class="origin cell">Origin</div>
+                                <div class="destination cell">Destination</div>
+                                <div class="departs cell"> Departs </div>
+                                <div class="arrives cell"> Arrives </div>
+                                <div class="nonstop cell"> Nonstop </div>
+                            </div>
+
+                            <div *ngFor="let flight of upcomingFlights" class="flight_results">
+                                <div class="flight_number cell"> {{flight.flightNumber}}</div>
+                                <div class="origin cell"> {{flight.origin}}</div>
+                                <div class="destination cell"> {{flight.destination}}</div>
+                                <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
+                                <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
+                                <div class="nonstop cell"> {{flight.nonstop}}</div>
+                            </div>
+
+                            <div>
+                            </div>
+
+                        </div>
+
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,7 @@ import { LocalStorage } from './shared/injection-tokens';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { AuthService } from './shared/auth/auth.service';
 import { UserService } from './shared/user-service/user.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { UserService } from './shared/user-service/user.service';
     FormsModule,
     AdminModule,
     UserModule,
+    BrowserAnimationsModule,
   ],
     providers: [
     {

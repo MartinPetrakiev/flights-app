@@ -6,6 +6,7 @@
   </div>
   <nav class="link_box">
     <a routerLink="flights" routerLinkActive="active"> Flights </a>
+    <a routerLink="user/profile" routerLinkActive="active"> User </a>
     <a routerLink="admin" routerLinkActive="active"> Admin </a>
     <a *ngIf="authService.isAuthenticated" (click)="logout()"> Logout </a>
   </nav>
