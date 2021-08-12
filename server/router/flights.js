@@ -16,7 +16,7 @@ router.get('/cities/origins', flightController.getFlightOrigins);
 router.get('/cities/destinations', flightController.getFlightsDestinations);
 
 
-router.put('/book', flightController.bookFlight);
+router.put('/book', auth(), flightController.bookFlight);
 router.post('/create', auth(), flightController.postNewFlight);
 router.patch('/:flightId/update', auth(), flightController.paptchEditFlight);
 router.delete('/:flightId/delete', auth(), flightController.deleteFlight);

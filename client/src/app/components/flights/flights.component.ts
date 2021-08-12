@@ -26,14 +26,7 @@ export class FlightsComponet implements OnInit {
   }
 
   ngOnInit(): void {
-    this.flightsService.getAllOrigins().subscribe(data =>{     
-      this.filteredOriginList = data;
-    }); 
-
-    this.flightsService.getAllDestinations().subscribe(data =>{
-      this.filteredDestinationList = data;
-    });
-
+    this.refresh()
   }
 
   query(): void {
@@ -46,8 +39,24 @@ export class FlightsComponet implements OnInit {
   }
 
   book(flightId: string): void {
-    console.log(flightId);
-    
+    const userId = this.authService.userId;
+    this.flightsService.bookFlight(flightId, userId).subscribe(
+      res => {
+        alert(`Flight booked`)
+        console.log(`Flight with id: ${flightId} booked by user: ${userId}`, res);
+      },
+      err => console.log(err)
+    );
+  }
+
+  refresh() {
+    this.flightsService.getAllOrigins().subscribe(data => {
+      this.filteredOriginList = data;
+    });
+
+    this.flightsService.getAllDestinations().subscribe(data => {
+      this.filteredDestinationList = data;
+    });
   }
 
 }

@@ -13,7 +13,7 @@ const API_URL = environment.apiURL;
 export class FlightsService {
 
   constructor(private http: HttpClient) { }
- 
+
   getPastFlightsOfUser(userId: string): Observable<any> {
     return this.http.get(`${API_URL}flights/user/${userId}/past`, { withCredentials: true });
   }
@@ -21,7 +21,6 @@ export class FlightsService {
   getUpcomingFlightsOfUser(userId: string): Observable<any> {
     return this.http.get(`${API_URL}flights/user/${userId}/upcoming`, { withCredentials: true });
   }
-
 
   getFlights(orig: string, dest: string): Observable<any> {
     return this.http.get(`${API_URL}flights/query/${orig}/${dest}`);
@@ -57,5 +56,9 @@ export class FlightsService {
 
   deleteFlight(id: string) {
     return this.http.delete(`${API_URL}flights/${id}/delete`, { withCredentials: true });
+  }
+
+  bookFlight(flightId: string, userId: string) {
+    return this.http.put(`${API_URL}flights/book`, { flightId, userId }, { withCredentials: true })
   }
 }
