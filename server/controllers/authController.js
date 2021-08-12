@@ -102,7 +102,7 @@ function editProfileInfo(req, res, next) {
 }
 
 function getUsers(req, res, next) {
-    return userModel.findAll().then(x => { res.status(200).json(x); });
+    return userModel.find().then(x => { res.status(200).json(x); });
 }
 
 module.exports = {

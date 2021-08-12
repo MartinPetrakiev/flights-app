@@ -108,7 +108,7 @@
         .flight_pane {
           margin-top: 10px;
           background-color: var(--main);
-          width: 80%;
+          width: 90%;
           height: 80%;
           padding: 20px;
           box-shadow: 0px 0px 10px 1px gray;
@@ -117,6 +117,7 @@
           .flight_results {
             display: flex;
             flex-direction: row;
+
             .mobile {
               display: none;
               @media screen and (max-width: 599px) {
@@ -140,7 +141,18 @@
 
           .cell {
             flex: 1;
-            padding-top: 5px;
+            padding: 5px;
+          }
+
+          .book_flight_btn {
+            font-family: Sora, sans-serif;
+            font-weight: 400;
+            color: rgb(255, 255, 255);
+            background-color: #8d9b9f;
+            border: 3px solid var(--main);
+            border-radius: 2rem;
+            display: flex;
+            vertical-align: middle;
           }
         }
       }

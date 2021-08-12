@@ -26,10 +26,10 @@ const flightSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    userId: {
+    bookedBy: [{
         type: ObjectId,
         ref: "User"
-    },
+    }],
 }, { timestamps: { createdAt: 'created_at' } });
 
 module.exports = mongoose.model('Flight', flightSchema);

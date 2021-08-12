@@ -10,13 +10,15 @@
                     <div class="search_box">
                         <select [(ngModel)]="selectedOrigin">
                             <option value="" disabled selected>from</option>
-                            <option *ngFor ="let result of filteredOriginList; let i=index" value={{result}} >{{result}}</option>
+                            <option *ngFor="let result of filteredOriginList; let i=index" value={{result}}>{{result}}
+                            </option>
                         </select>
                     </div>
                     <div class="search_box">
                         <select [(ngModel)]="selectedDestination">
                             <option value="" disabled selected>to</option>
-                            <option *ngFor ="let result of filteredDestinationList; let i=index" value={{result}} >{{result}}</option>
+                            <option *ngFor="let result of filteredDestinationList; let i=index" value={{result}}>
+                                {{result}}</option>
                         </select>
                     </div>
                     <div class="search_box">
@@ -29,6 +31,7 @@
                         <div class="departs cell"> Departs </div>
                         <div class="arrives cell"> Arrives </div>
                         <div class="nonstop cell"> Nonstop </div>
+                        <div *ngIf="authService.isAuthenticated" class="book cell"> Book </div>
                     </div>
 
                     <div *ngFor="let flight of flights" class="flight_results">
@@ -36,6 +39,9 @@
                         <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
                         <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
                         <div class="nonstop cell"> {{flight.nonstop}}</div>
+                        <div *ngIf="authService.isAuthenticated" class="book_btn cell">
+                            <button class="book_flight_btn" (click)="book(flight._id)">Book</button>
+                        </div>
                     </div>
 
                     <div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Flight } from '../../shared/models/flight.model';
 import { FlightsService } from '../../shared/flights-service/flights.service';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 
 @Component({
   selector: 'app-flights',
@@ -16,7 +17,7 @@ export class FlightsComponet implements OnInit {
   filteredDestinationList: any[];
 
 
-  constructor(private flightsService: FlightsService) {
+  constructor(private flightsService: FlightsService, public authService: AuthService) {
     this.flights = [];
     this.selectedOrigin = '';
     this.selectedDestination = '';
@@ -42,6 +43,11 @@ export class FlightsComponet implements OnInit {
     this.flightsService.getFlights(origin, destination).subscribe(data => {
       this.flights = data;
     })
+  }
+
+  book(flightId: string): void {
+    console.log(flightId);
+    
   }
 
 }

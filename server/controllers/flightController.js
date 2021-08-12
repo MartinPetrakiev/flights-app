@@ -79,7 +79,6 @@ function deleteFlight(req, res, next) {
 function paptchEditFlight(req, res, next) {
     const { flightId } = req.params;
     const flightData = req.body;
-    console.log(flightData);
 
     // if the userId is not the same as this one of the flights, the flight will not be updated
     flightModel.findOneAndUpdate({ _id: flightId }, flightData, { new: true })
@@ -94,6 +93,23 @@ function paptchEditFlight(req, res, next) {
         .catch(next);
 }
 
+function bookFlight(req, res, next) {
+    const { flightId, userId } = req.body;
+    Promise.all([
+        flightModel.findByIdAndUpdate(flightId, { $push: { "bookedBy": userId } }),
+        userModel.findByIdAndUpdate(userId, { $push: { "flights": flightId } }),
+    ])
+        .then(([updatedFlight, updatedUser, __]) => {
+            if (updatedFlight && updatedUser) {
+                res.status(200).json(updatedFlight);
+            }
+            else {
+                res.status(401).json({ message: `Not allowed!` });
+            }
+        })
+        .catch(next);;
+}
+
 module.exports = {
     getFlights,
     getFlightOrigins,
@@ -103,5 +119,6 @@ module.exports = {
     getByFlightNumber,
     postNewFlight,
     paptchEditFlight,
-    deleteFlight
+    deleteFlight,
+    bookFlight
 };
