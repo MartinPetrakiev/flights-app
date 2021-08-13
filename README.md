@@ -68,20 +68,24 @@ App starts on http://localhost:4200/
 - There are 2 directories in client/src/app/:
 1. `shared` contains all services and models used between app's components.
 2. `components` contains all componets for the different views which specify different routes in the app. 
-    All routes -- `ladning`, `flights`, `admin` (three sub-routes `create`, `edit`, `edit-panel`) and `user` (three sub-routes `register`, `log-in`, `profile`)
+
+
+    All routes -- `ladning`, `flights`, `admin` (three sub-routes `create`, `edit`, `edit-panel`) and `user` (three sub-routes `register`, `log-in`, `profile`).
+    
     ```
-    <domain/port>/ --- landing component
-                 /flights --- flights component
-                 /admin  --- admin component 
-                 /admin/create
-                 /admin/edit-panel
-                 /admin/edit
-                 /user --- user component
+    <domain/port>/
+                 /flights
+                 /admin  --- private
+                 /admin/create  --- private
+                 /admin/edit-panel  --- private
+                 /admin/edit   --- private
+                 /user
                  /user/log-in
                  /user/register
-                 /user/profile
+                 /user/profile  --- private
     ```
+    
     Public routes are only `ladning`, `flights`.
-    Private route is `admin` (guarded only for the admin user - manually created in db, for test purpose -- login credentials email: "gosho@mail.com" and password: "asdasd"),
-    and route `user/profile`.
+    Private routes are `admin` with permission to access only by admin user (for now manually created in db, for test purpose -- login credentials email: "gosho@mail.com" and password: "asdasd"), and route `user/profile`.
+   
  
