@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Flight } from 'src/app/shared/models/flight.model';
 import { FlightsService } from '../../../shared/flights-service/flights.service';
+import { AlertDialogComponent } from '../../dialog/alert/alert-dialog.component';
 
 
 @Component({
@@ -28,7 +30,8 @@ export class EditComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private flightService: FlightsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {
     this.form = this.fb.group({
       origin: ['', [Validators.required]],
@@ -59,10 +62,26 @@ export class EditComponent implements OnInit {
     this.flightService.updateFlight(flight).subscribe(
       res => {
         console.log('flight updated', res);
-        alert('Flight Updated in database!')
+        this.dialog.open(AlertDialogComponent, {
+          data: {
+            title: 'Edit Flight',
+            message: 'Flight updated!'
+          }
+        });
       },
-      err => console.log(err)
+      err => {
+        console.log(err);
+        
+        this.dialog.open(AlertDialogComponent, {
+          data: {
+            title: 'ERROR',
+            message: 'Error occured!',
+            color: 'red'
+          }
+        });
+      }
     );
+
   }
 
 }

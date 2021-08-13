@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Flight } from 'src/app/shared/models/flight.model';
 import { FlightsService } from '../../../shared/flights-service/flights.service';
-
-
+import { AlertDialogComponent } from '../../dialog/alert/alert-dialog.component';
 
 @Component({
   selector: 'app-create',
@@ -24,22 +24,42 @@ export class CreateComponent {
   flightList: string[] = [];
   errors: string[] | string = '';
 
-  constructor(private flightService: FlightsService) {
+  constructor(
+    private flightService: FlightsService,
+    private dialog: MatDialog
+  ) {
   }
 
-  sendFlight(form: NgForm) {   
+  sendFlight(form: NgForm) {
     this.flight = form.control.value;
     this.flight.nonstop = !!this.flight.nonstop
     this.flightService.postFlight(this.flight).subscribe(
       res => {
         console.log('new flight added', res);
-        alert('Flight added to database!')
+
+        this.dialog.open(AlertDialogComponent, {
+          data: {
+            title: 'Add flight',
+            message: 'Flight added!',
+          }
+        });
+        
         form.reset();
       },
-      err => console.log(err)
-    );  
-    
-       
+      err => {
+        console.log(err);
+
+        this.dialog.open(AlertDialogComponent, {
+          data: {
+            title: 'ERROR',
+            message: 'Error occured!',
+            color: 'red'
+          }
+        });
+      }
+    );
+
+
   }
 
 }

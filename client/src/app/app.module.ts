@@ -18,11 +18,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MyPipesModule } from './shared/my-pipes.module';
 import { ConfirmDialogComponent } from './components/dialog/confirm/confirm-dialog.component';
+import { AlertDialogComponent } from './components/dialog/alert/alert-dialog.component';
 
 
 @NgModule({
   entryComponents: [
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AlertDialogComponent
   ],
   declarations: [
     AppComponent,
@@ -31,6 +33,7 @@ import { ConfirmDialogComponent } from './components/dialog/confirm/confirm-dial
     AdminComponent,
     UserComponent,
     ConfirmDialogComponent,
+    AlertDialogComponent,
   ],
   imports: [
     BrowserModule,
