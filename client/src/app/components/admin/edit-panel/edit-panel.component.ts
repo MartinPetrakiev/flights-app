@@ -26,16 +26,19 @@ export class EditPanelComponent implements OnInit {
   filteredDestinationList: any[] = [];
   flightNumberSearch: any = '';
 
-  loading = true;
+  loading: boolean = true;
 
-  constructor(private flightsService: FlightsService, private router: Router) {
+  constructor(
+    private flightsService: FlightsService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
     this.refresh();
   }
 
-  updateFlight(flight: Flight): void {  
+  updateFlight(flight: Flight): void {
     this.router.navigate([`admin/edit/${flight._id}`]);
   }
 
@@ -43,7 +46,7 @@ export class EditPanelComponent implements OnInit {
     if (window.confirm('are you sure you want to delete this flight? ')) {
       this.flightsService.deleteFlight(flight._id).subscribe(
         res => {
-          if(res) {
+          if (res) {
             this.refresh();
           }
         },
@@ -61,14 +64,22 @@ export class EditPanelComponent implements OnInit {
   }
 
   queryFlightNumber(flightNumberSearch: string): void {
+    this.loading = true;
     this.flightsService.getFlightByFlightNumber(flightNumberSearch).subscribe(data => {
-      this.flightList = data;
+      if(data) {
+        this.loading = false;
+        this.flightList = data;
+      }
     })
   }
 
   resetFilter() {
+    this.loading = true;
     this.flightsService.getAllFlightsData().subscribe(data => {
-      this.flightList = data;
+      if(data) {
+        this.loading = false;
+        this.flightList = data;
+      }
     });
   }
 
@@ -76,9 +87,6 @@ export class EditPanelComponent implements OnInit {
 
     this.flightsService.getAllFlightsData().subscribe(data => {
       this.flightList = data;
-      if (this.flightList.length) {
-        this.loading = false;
-      }
     })
     this.flightsService.getAllOrigins().subscribe(data => {
       this.filteredOriginList = data;
@@ -87,6 +95,8 @@ export class EditPanelComponent implements OnInit {
     this.flightsService.getAllDestinations().subscribe(data => {
       this.filteredDestinationList = data;
     });
+
+    this.loading = false;
   }
 
 

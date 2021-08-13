@@ -26,27 +26,38 @@
                     </div>
                 </div>
                 <div class="flight_pane">
-                    <div class="flight_headers">
-                        <div class="flight_number cell"> Flight # </div>
-                        <div class="departs cell"> Departs </div>
-                        <div class="arrives cell"> Arrives </div>
-                        <div class="nonstop cell"> Nonstop </div>
-                        <div *ngIf="authService.isAuthenticated" class="book cell"> Book </div>
-                    </div>
-
-                    <div *ngFor="let flight of flights" class="flight_results">
-                        <div class="flight_number cell"> {{flight.flightNumber}}</div>
-                        <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
-                        <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
-                        <div class="nonstop cell"> {{flight.nonstop | yesNo }}</div>
-                        <div *ngIf="authService.isAuthenticated" class="book_btn cell">
-                            <button class="book_flight_btn" (click)="book(flight._id)">Book</button>
+                    <ng-container *ngIf="loading else loadingMsg">
+                        <div class="flight_headers">
+                            <div class="flight_number cell"> Flight # </div>
+                            <div class="departs cell"> Departs </div>
+                            <div class="arrives cell"> Arrives </div>
+                            <div class="nonstop cell"> Nonstop </div>
+                            <div *ngIf="authService.isAuthenticated" class="book cell"> Book </div>
                         </div>
-                    </div>
 
-                    <div>
-                    </div>
+                        <ng-container *ngIf="!!flights.length else noFlightsMsg">
+                            <div *ngFor="let flight of flights" class="flight_results">
+                                <div class="flight_number cell"> {{flight.flightNumber}}</div>
+                                <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
+                                <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
+                                <div class="nonstop cell"> {{flight.nonstop | yesNo }}</div>
+                                <div *ngIf="authService.isAuthenticated" class="book_btn cell">
+                                    <ng-container *ngIf="flight.bookedBy!.length < 5">
+                                        <button class="book_flight_btn" (click)="book(flight._id)">Book</button>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </ng-container>
 
+                        <ng-template #noFlightsMsg>
+                            <div class="no_flights_msg">No flights loaded</div>
+                        </ng-template>
+
+                    </ng-container>
+
+                    <ng-template #loadingMsg>
+                        <div class="loading">Loading...</div>
+                    </ng-template>
                 </div>
             </div>
         </div>

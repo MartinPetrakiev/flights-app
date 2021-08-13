@@ -16,6 +16,7 @@ export class FlightsComponet implements OnInit {
   filteredOriginList: any[];
   filteredDestinationList: any[];
 
+  loading: boolean = true;
 
   constructor(
     private flightsService: FlightsService, 
@@ -33,11 +34,15 @@ export class FlightsComponet implements OnInit {
   }
 
   query(): void {
+    this.loading = true;
     const origin = this.selectedOrigin;
     const destination = this.selectedDestination;
 
     this.flightsService.getFlights(origin, destination).subscribe(data => {
-      this.flights = data;
+      if(data) {
+        this.loading = false;
+        this.flights = data;
+      }
     })
   }
 
@@ -60,6 +65,8 @@ export class FlightsComponet implements OnInit {
     this.flightsService.getAllDestinations().subscribe(data => {
       this.filteredDestinationList = data;
     });
+
+    this.loading = false;
   }
 
 }

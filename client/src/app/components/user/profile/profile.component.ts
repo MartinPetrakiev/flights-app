@@ -13,6 +13,10 @@ export class ProfileComponent implements OnInit {
   pastFlights: Flight[] = [];
   upcomingFlights: Flight[] = [];
   userId: string = '';
+
+  loadingPast: boolean = true;
+  loadingUpcoming: boolean = true;
+
   constructor(
     private flightsService: FlightsService, 
     private authService: AuthService,
@@ -23,6 +27,7 @@ export class ProfileComponent implements OnInit {
     this.flightsService.getPastFlightsOfUser(this.userId).subscribe(
       res => {
         this.pastFlights = res;
+        this.loadingPast = false;
       },
       err => {
         console.log('get past flights error', err);
@@ -31,6 +36,7 @@ export class ProfileComponent implements OnInit {
     this.flightsService.getUpcomingFlightsOfUser(this.userId).subscribe(
       res => {
         this.upcomingFlights = res;
+        this.loadingUpcoming = false;
       },
       err => {
         console.log('get upcoming flights error', err);
