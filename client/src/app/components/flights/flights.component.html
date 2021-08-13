@@ -32,7 +32,7 @@
                             <div class="departs cell"> Departs </div>
                             <div class="arrives cell"> Arrives </div>
                             <div class="nonstop cell"> Nonstop </div>
-                            <div *ngIf="authService.isAuthenticated" class="book cell"> Book </div>
+                            <div *ngIf="authService.isAuthenticated" class="book cell"> Add to History </div>
                         </div>
 
                         <ng-container *ngIf="!!flights.length else noFlightsMsg">
@@ -42,8 +42,8 @@
                                 <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
                                 <div class="nonstop cell"> {{flight.nonstop | yesNo }}</div>
                                 <div *ngIf="authService.isAuthenticated" class="book_btn cell">
-                                    <ng-container *ngIf="flight.bookedBy!.length < 5">
-                                        <button class="book_flight_btn" (click)="book(flight._id)">Book</button>
+                                    <ng-container *ngIf="!checkBooked(flight.bookedBy!)">
+                                        <button class="book_flight_btn" (click)="book(flight._id)">Add to My Flights</button>
                                     </ng-container>
                                 </div>
                             </div>

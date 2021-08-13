@@ -18,10 +18,12 @@ export class FlightsComponet implements OnInit {
 
   loading: boolean = true;
 
+  didAdd: boolean = false;
+
   constructor(
-    private flightsService: FlightsService, 
+    private flightsService: FlightsService,
     public authService: AuthService,
-    ) {
+  ) {
     this.flights = [];
     this.selectedOrigin = '';
     this.selectedDestination = '';
@@ -39,7 +41,7 @@ export class FlightsComponet implements OnInit {
     const destination = this.selectedDestination;
 
     this.flightsService.getFlights(origin, destination).subscribe(data => {
-      if(data) {
+      if (data) {
         this.loading = false;
         this.flights = data;
       }
@@ -52,6 +54,7 @@ export class FlightsComponet implements OnInit {
       res => {
         alert(`Flight booked`)
         console.log(`Flight with id: ${flightId} booked by user: ${userId}`, res);
+        this.query();
       },
       err => console.log(err)
     );
@@ -67,6 +70,10 @@ export class FlightsComponet implements OnInit {
     });
 
     this.loading = false;
+  }
+
+  checkBooked(bookedBy: string[]): boolean {   
+    return bookedBy.some(el => el === this.authService.userId);
   }
 
 }
