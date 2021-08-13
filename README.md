@@ -15,7 +15,7 @@ Front-End: Angular [docs](https://angular.io/docs).
 
 # Set up and usage
 
-Database:
+**Database**:
 
 To set up database MongoDB Tools should be installed on the machine. In console run the following command:
 
@@ -26,7 +26,7 @@ mongorestore --db=transportation <path to db files>
 Dump files can be found [here](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/db/transportation)
 
 
-Server:
+**Server**:
 
 To start server, from inside the [api dir](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/server).
 Run following commands in terminal:
@@ -42,7 +42,7 @@ npm start
 Server starts on http://localhost:3000/
 
 
-Client:
+**Client**:
 
 To start client side view, form inside the [client dir](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/client).
 Run following commands in terminal:
@@ -58,13 +58,11 @@ npm start
 App starts on http://localhost:4200/
 
 
-**API**
-[Endpoints](https://example.com/)
+**API endpoints**
+[here](https://example.com/)
 
 
-**Client**
-
-*In code documentation.*
+*In code documentation for client.*
 - There are 2 directories in client/src/app/:
 1. `shared` contains all services and models used between app's components.
 2. `components` contains all componets for the different views which specify different routes in the app. 
