@@ -15,6 +15,19 @@ Front-End: Angular [docs](https://angular.io/docs).
 
 # Set up and usage
 
+Database:
+
+To set up database MongoDB Tools should be installed on the machine. In console run the following command:
+
+**`
+mongorestore --db=transportation <path to db files>
+`**
+
+Dump files can be found [here](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/db/transportation)
+
+
+Server:
+
 To start server, from inside the [api dir](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/server).
 Run following commands in terminal:
 
@@ -28,6 +41,8 @@ npm start
 
 Server starts on http://localhost:3000/
 
+
+Client:
 
 To start client side view, form inside the [client dir](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/client).
 Run following commands in terminal:
@@ -50,10 +65,23 @@ App starts on http://localhost:4200/
 **Client**
 
 *In code documentation.*
-- There are 3 directories in client/src/app/:
-1. `auth` contains all services for the authentication.
+- There are 2 directories in client/src/app/:
+1. `shared` contains all services and models used between app's components.
 2. `components` contains all componets for the different views which specify different routes in the app. 
-    Public routes are only `ladning`, `flights` and `user` which has two sub-routes `register` and `log-in`.
-    Private route is `admin', which has two sub-routes `create`, `edit-panel`
-3. `models` contains interfaces used inside application logic.
+    All routes -- `ladning`, `flights`, `admin` (three sub-routes `create`, `edit`, `edit-panel`) and `user` (three sub-routes `register`, `log-in`, `profile`)
+    ```
+    <domain/port>/ --- landing component
+                 /flights --- flights component
+                 /admin  --- admin component 
+                 /admin/create
+                 /admin/edit-panel
+                 /admin/edit
+                 /user --- user component
+                 /user/log-in
+                 /user/register
+                 /user/profile
+    ```
+    Public routes are only `ladning`, `flights`.
+    Private route is `admin` (guarded only for the admin user - manually created in db, for test purpose -- login credentials email: "gosho@mail.com" and password: "asdasd"),
+    and route `user/profile`.
  
