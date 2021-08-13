@@ -2,7 +2,9 @@
 
 Flights-App is a concept idea implemented in a Single Page Application build with MEAN Stack.
 The application main purpose is to help users search avilable flights by origin and destination and check departure/arrive date and time.
-The application has admin interface so registered users can record new flights in database or edit and delete existing ones.
+The application has:
+    - Admin interface with permission to access by one user, who can record new flights in database, edit and delete existing ones.
+    - User interface where registered users of the app can track their flight history of past and upcomming flights.
 
 # Stack
 
