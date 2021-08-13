@@ -15,6 +15,8 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { AuthService } from './shared/auth/auth.service';
 import { UserService } from './shared/user-service/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { YesNoPipe } from './shared/yes-no-pipe';
+import { MyPipesModule } from './shared/my-pipes.module';
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LandingComponent,
     FlightsComponet,
     AdminComponent,
-    UserComponent
+    UserComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminModule,
     UserModule,
     BrowserAnimationsModule,
+    MyPipesModule
   ],
-    providers: [
+  providers: [
     {
       provide: LocalStorage,
       useFactory: (platformId: Object) => {
@@ -74,7 +77,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       deps: [PLATFORM_ID]
     },
     AuthService,
-    UserService
+    UserService,
+    YesNoPipe
   ],
   bootstrap: [AppComponent]
 })

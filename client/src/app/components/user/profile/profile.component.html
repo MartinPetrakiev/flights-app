@@ -24,7 +24,7 @@
                                 <div class="destination cell"> {{flight.destination}}</div>
                                 <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
                                 <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
-                                <div class="nonstop cell"> {{flight.nonstop}}</div>
+                                <div class="nonstop cell"> {{flight.nonstop | yesNo }}</div>
                             </div>
 
                             <div>
@@ -49,7 +49,7 @@
                                 <div class="destination cell"> {{flight.destination}}</div>
                                 <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
                                 <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
-                                <div class="nonstop cell"> {{flight.nonstop}}</div>
+                                <div class="nonstop cell"> {{flight.nonstop | yesNo }}</div>
                             </div>
 
                             <div>

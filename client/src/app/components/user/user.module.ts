@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ProfileComponent } from './profile/profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MyPipesModule } from 'src/app/shared/my-pipes.module';
 
 
 
@@ -15,7 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
   declarations: [
     RegisterComponent,
     LogInComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +26,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
+    MyPipesModule
   ]
 })
 export class UserModule { }

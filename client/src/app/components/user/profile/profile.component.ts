@@ -13,7 +13,10 @@ export class ProfileComponent implements OnInit {
   pastFlights: Flight[] = [];
   upcomingFlights: Flight[] = [];
   userId: string = '';
-  constructor(private flightsService: FlightsService, private authService: AuthService) { }
+  constructor(
+    private flightsService: FlightsService, 
+    private authService: AuthService,
+    ) { }
 
   ngOnInit(): void {
     this.userId = this.authService.userId;
