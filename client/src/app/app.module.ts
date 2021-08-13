@@ -15,17 +15,22 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { AuthService } from './shared/auth/auth.service';
 import { UserService } from './shared/user-service/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { YesNoPipe } from './shared/yes-no-pipe';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MyPipesModule } from './shared/my-pipes.module';
+import { ConfirmDialogComponent } from './components/dialog/confirm/confirm-dialog.component';
 
 
 @NgModule({
+  entryComponents: [
+    ConfirmDialogComponent
+  ],
   declarations: [
     AppComponent,
     LandingComponent,
     FlightsComponet,
     AdminComponent,
     UserComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { MyPipesModule } from './shared/my-pipes.module';
     AdminModule,
     UserModule,
     BrowserAnimationsModule,
+    MatDialogModule,
     MyPipesModule
   ],
   providers: [
@@ -78,7 +84,6 @@ import { MyPipesModule } from './shared/my-pipes.module';
     },
     AuthService,
     UserService,
-    YesNoPipe
   ],
   bootstrap: [AppComponent]
 })

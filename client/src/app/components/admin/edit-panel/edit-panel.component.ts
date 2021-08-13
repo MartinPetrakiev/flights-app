@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Flight } from '../../../shared/models/flight.model';
 import { FlightsService } from '../../../shared/flights-service/flights.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from "../../dialog/confirm/confirm-dialog.component";
 
 
 @Component({
@@ -30,7 +32,8 @@ export class EditPanelComponent implements OnInit {
 
   constructor(
     private flightsService: FlightsService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
   }
 
@@ -43,16 +46,24 @@ export class EditPanelComponent implements OnInit {
   }
 
   deleteFlight(flight: Flight): void {
-    if (window.confirm('are you sure you want to delete this flight? ')) {
-      this.flightsService.deleteFlight(flight._id).subscribe(
-        res => {
-          if (res) {
-            this.refresh();
-          }
-        },
-        err => console.log('HTTP Error', err),
-        () => console.log('HTTP request completed.'));
-    }
+    const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Confirm Delete Flight',
+        message: 'Are you sure you want to delete this flight?'
+      }
+    });
+    confirmDialog.afterClosed().subscribe(result => {
+      if (result === true) {
+          this.flightsService.deleteFlight(flight._id).subscribe(
+            res => {
+              if (res) {
+                this.refresh();
+              }
+            },
+            err => console.log('HTTP Error', err),
+            () => console.log('HTTP request completed.'));
+      }
+    })
   }
   queryOriginDest(): void {
     const origin = this.selectedOrigin;
@@ -66,7 +77,7 @@ export class EditPanelComponent implements OnInit {
   queryFlightNumber(flightNumberSearch: string): void {
     this.loading = true;
     this.flightsService.getFlightByFlightNumber(flightNumberSearch).subscribe(data => {
-      if(data) {
+      if (data) {
         this.loading = false;
         this.flightList = data;
       }
@@ -76,7 +87,7 @@ export class EditPanelComponent implements OnInit {
   resetFilter() {
     this.loading = true;
     this.flightsService.getAllFlightsData().subscribe(data => {
-      if(data) {
+      if (data) {
         this.loading = false;
         this.flightList = data;
       }
