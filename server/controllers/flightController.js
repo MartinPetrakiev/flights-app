@@ -79,10 +79,16 @@ function getByFlightNumber(req, res, next) {
 
 async function postNewFlight(req, res, next) {
     const data = req.body;
-    const { _id: userId } = req.user;
-    const newFlight = await flightModel.create({ ...data });
-    const user = await userModel.updateOne({ _id: userId }, { $push: { flights: newFlight._id } });
-    return res.status(200).json({ message: `New Flight Created` });
+    flightModel.create({ ...data })
+        .then(flight => {
+            if (flight) {
+                res.status(200).json(flight);
+            }
+            else {
+                res.status(401).json({ message: `Not allowed!` });
+            }
+        })
+        .catch(next);
 }
 
 function deleteFlight(req, res, next) {
