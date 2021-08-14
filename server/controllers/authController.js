@@ -84,22 +84,22 @@ function logout(req, res) {
         .catch(err => res.send(err));
 }
 
-function getProfileInfo(req, res, next) {
-    const { _id: userId } = req.user;
+// function getProfileInfo(req, res, next) {
+//     const { _id: userId } = req.user;
 
-    userModel.findOne({ _id: userId }, { password: 0, __v: 0 }) //finding by Id and returning without password and __v
-        .then(user => { res.status(200).json(user); })
-        .catch(next);
-}
+//     userModel.findOne({ _id: userId }, { password: 0, __v: 0 }) //finding by Id and returning without password and __v
+//         .then(user => { res.status(200).json(user); })
+//         .catch(next);
+// }
 
-function editProfileInfo(req, res, next) {
-    const { _id: userId } = req.user;
-    const { tel, username, email } = req.body;
+// function editProfileInfo(req, res, next) {
+//     const { _id: userId } = req.user;
+//     const { username, email } = req.body;
 
-    userModel.findOneAndUpdate({ _id: userId }, { tel, username, email }, { runValidators: true, new: true })
-        .then(x => { res.status(200).json(x); })
-        .catch(next);
-}
+//     userModel.findOneAndUpdate({ _id: userId }, { username, email }, { runValidators: true, new: true })
+//         .then(x => { res.status(200).json(x); })
+//         .catch(next);
+// }
 
 function getUsers(req, res, next) {
     return userModel.find().then(x => { res.status(200).json(x); });
@@ -109,7 +109,7 @@ module.exports = {
     login,
     register,
     logout,
-    getProfileInfo,
-    editProfileInfo,
+    // getProfileInfo,
+    // editProfileInfo,
     getUsers
 };

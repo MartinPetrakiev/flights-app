@@ -1,25 +1,17 @@
 {
   "name": "rest-api",
   "version": "1.0.0",
-  "description": "REST-api for back-end of React project",
+  "description": "REST-api",
   "main": "index.js",
   "scripts": {
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BoogyHS/REST-api.git"
-  },
   "keywords": [
     "rest-api"
   ],
-  "author": "BoogyHS",
+  "author": "MartinPetrakiev",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BoogyHS/REST-api/issues"
-  },
-  "homepage": "https://github.com/BoogyHS/REST-api#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.5",
