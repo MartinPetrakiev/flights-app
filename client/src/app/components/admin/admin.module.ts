@@ -1,14 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CreateComponent } from './create/create.component';
 import { EditPanelComponent } from './edit-panel/edit-panel.component';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { HttpClientModule } from '@angular/common/http';
 import { AdminRoutingModule } from './admin-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { CoreModule } from 'src/app/shared/core/core.module';
 
 
 
@@ -19,13 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     EditComponent
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
-    AdminRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatPaginatorModule
+    CoreModule,
+    AdminRoutingModule
   ]
 })
 export class AdminModule { }

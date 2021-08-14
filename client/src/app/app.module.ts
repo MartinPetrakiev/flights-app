@@ -14,19 +14,12 @@ import { LocalStorage } from './shared/injection-tokens';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { AuthService } from './shared/auth/auth.service';
 import { UserService } from './shared/user-service/user.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MyPipesModule } from './shared/my-pipes.module';
 import { ConfirmDialogComponent } from './components/dialog/confirm/confirm-dialog.component';
 import { AlertDialogComponent } from './components/dialog/alert/alert-dialog.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { CoreModule } from './shared/core/core.module';
 
 
 @NgModule({
-  entryComponents: [
-    ConfirmDialogComponent,
-    AlertDialogComponent
-  ],
   declarations: [
     AppComponent,
     LandingComponent,
@@ -37,16 +30,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AlertDialogComponent,
   ],
   imports: [
-    BrowserModule,
+    CoreModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
     AdminModule,
     UserModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MyPipesModule,
-    MatPaginatorModule
   ],
   providers: [
     {
