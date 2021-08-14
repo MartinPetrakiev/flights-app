@@ -47,7 +47,6 @@
 }
 
 .container {
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,6 +115,13 @@
                 width: 99%;
                 margin: 0;
             }
+        }
+    }
+
+    .mat-paginator {
+        height: 65px;
+        .mat-paginator-outer-container .mat-paginator-container {
+            padding-top: 0;
         }
     }
 }

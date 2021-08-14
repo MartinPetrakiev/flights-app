@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Viga:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 :root {
-    --main: #1A1A21
+    --main: #1a1a21;
 }
 
 body {
@@ -15,8 +15,31 @@ body {
     height: 100vh;
 }
 
-
-.mat-dialog-container{
-    background-color: var(--main); 
+.mat-dialog-container {
+    background-color: var(--main);
 }
 
+.mat-paginator {
+    height: 45px;
+    color: white;
+    background-color: var(--main);
+    .mat-paginator-container {
+        height: 45px;
+        min-height: unset;
+        flex-wrap: nowrap;
+        padding-top: 10px;
+        .mat-select-arrow {
+            color: #8d9b9f;
+        }
+        .mat-form-field-underline {
+            background-color: #8d9b9f;
+        }
+        .mat-select-value {
+            color: white;
+        }
+
+        .mat-paginator-navigation-previous {
+            color: #8d9b9f;
+        }
+    }
+}

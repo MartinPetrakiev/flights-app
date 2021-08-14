@@ -27,34 +27,41 @@
             <button class="util_button" (click)="resetFilter()">Reset Filter</button>
             <button class="util_button" routerLink="../create">&lt; Back to create</button>
         </div>
-        <table class="flightTable" *ngIf="!loading else loadingMsg">
-            <ng-container *ngIf="!!flightList.length else noFlightsMsg">
-                <thead>
-                    <tr>
-                        <th>origin</th>
-                        <th>destination</th>
-                        <th>flight #</th>
-                        <th>depart</th>
-                        <th>arrive</th>
-                        <th>nonstop</th>
-                        <th>update</th>
-                        <th>delete</th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    <tr *ngFor="let flight of flightList; let i=index">
-                        <td>{{flight.origin}}</td>
-                        <td>{{flight.destination}}</td>
-                        <td>{{flight.flightNumber}}</td>
-                        <td>{{flight.depart | date: 'short'}}</td>
-                        <td>{{flight.arrive | date: 'short'}}</td>
-                        <td>{{flight.nonstop}}</td>
-                        <td><button class="update" (click)="updateFlight(flight)">go</button></td>
-                        <td><button class="delete" (click)="deleteFlight(flight)">go</button></td>
-                    </tr>
-                </tbody>
-            </ng-container>
-        </table>
+        <div class="table_container">
+            <table class="flightTable" *ngIf="!loading else loadingMsg">
+                <ng-container *ngIf="!!flightList.length else noFlightsMsg">
+                    <thead>
+                        <tr>
+                            <th>origin</th>
+                            <th>destination</th>
+                            <th>flight #</th>
+                            <th>depart</th>
+                            <th>arrive</th>
+                            <th>nonstop</th>
+                            <th>update</th>
+                            <th>delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let flight of pageSlice; let i=index">
+                            <td>{{flight.origin}}</td>
+                            <td>{{flight.destination}}</td>
+                            <td>{{flight.flightNumber}}</td>
+                            <td>{{flight.depart | date: 'short'}}</td>
+                            <td>{{flight.arrive | date: 'short'}}</td>
+                            <td>{{flight.nonstop}}</td>
+                            <td><button class="update" (click)="updateFlight(flight)">go</button></td>
+                            <td><button class="delete" (click)="deleteFlight(flight)">go</button></td>
+                        </tr>
+                    </tbody>
+                </ng-container>
+            </table>
+    
+            <mat-paginator [length]="flightList.length" [pageSize]="5" [pageSizeOptions]="[5, 10]"
+                (page)="OnPageChange($event)">
+            </mat-paginator>
+        </div>
+        
         <ng-template #noFlightsMsg>
             <div>NO FLIGHTS AVAILABLE</div>
         </ng-template>

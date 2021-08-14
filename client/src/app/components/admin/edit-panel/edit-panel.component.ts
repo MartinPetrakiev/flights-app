@@ -4,6 +4,7 @@ import { FlightsService } from '../../../shared/flights-service/flights.service'
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from "../../dialog/confirm/confirm-dialog.component";
+import { PageEvent } from '@angular/material/paginator';
 
 
 @Component({
@@ -29,6 +30,8 @@ export class EditPanelComponent implements OnInit {
   flightNumberSearch: any = '';
 
   loading: boolean = true;
+
+  pageSlice: any[] = [];
 
   constructor(
     private flightsService: FlightsService,
@@ -65,12 +68,14 @@ export class EditPanelComponent implements OnInit {
       }
     })
   }
+
   queryOriginDest(): void {
     const origin = this.selectedOrigin;
     const destination = this.selectedDestination;
 
     this.flightsService.getFlights(origin, destination).subscribe(data => {
       this.flightList = data;
+      this.pageSlice = this.flightList.slice(0, 5);
     })
   }
 
@@ -80,6 +85,7 @@ export class EditPanelComponent implements OnInit {
       if (data) {
         this.loading = false;
         this.flightList = data;
+        this.pageSlice = this.flightList.slice(0, 5);
       }
     })
   }
@@ -90,6 +96,7 @@ export class EditPanelComponent implements OnInit {
       if (data) {
         this.loading = false;
         this.flightList = data;
+        this.pageSlice = this.flightList.slice(0, 5);
       }
     });
   }
@@ -98,6 +105,7 @@ export class EditPanelComponent implements OnInit {
 
     this.flightsService.getAllFlightsData().subscribe(data => {
       this.flightList = data;
+      this.pageSlice = this.flightList.slice(0, 5);
     })
     this.flightsService.getAllOrigins().subscribe(data => {
       this.filteredOriginList = data;
@@ -108,6 +116,16 @@ export class EditPanelComponent implements OnInit {
     });
 
     this.loading = false;
+  }
+
+
+  OnPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.flightList.length) {
+      endIndex = this.flightList.length
+    }
+    this.pageSlice = this.flightList.slice(startIndex, endIndex)
   }
 
 

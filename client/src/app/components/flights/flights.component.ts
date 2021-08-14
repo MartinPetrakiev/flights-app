@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Flight } from '../../shared/models/flight.model';
 import { FlightsService } from '../../shared/flights-service/flights.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
+import { PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertDialogComponent } from '../dialog/alert/alert-dialog.component';
 
 @Component({
   selector: 'app-flights',
@@ -10,26 +13,26 @@ import { AuthService } from 'src/app/shared/auth/auth.service';
 })
 export class FlightsComponet implements OnInit {
 
-  flights: Flight[];
-  selectedOrigin: string;
-  selectedDestination: string;
-  filteredOriginList: any[];
-  filteredDestinationList: any[];
+  flights: Flight[] = [];
+  selectedOrigin: string = '';
+  selectedDestination: string = '';
+  filteredOriginList: any[] = [];
+  filteredDestinationList: any[] = [];
 
   loading: boolean = true;
 
   didAdd: boolean = false;
 
+  pageSlice: any[] = [];
+
   constructor(
     private flightsService: FlightsService,
     public authService: AuthService,
+    private dialog: MatDialog
   ) {
-    this.flights = [];
-    this.selectedOrigin = '';
-    this.selectedDestination = '';
-    this.filteredOriginList = [];
-    this.filteredDestinationList = [];
   }
+
+
 
   ngOnInit(): void {
     this.refresh()
@@ -44,6 +47,7 @@ export class FlightsComponet implements OnInit {
       if (data) {
         this.loading = false;
         this.flights = data;
+        this.pageSlice = this.flights.slice(0, 5)
       }
     })
   }
@@ -52,11 +56,26 @@ export class FlightsComponet implements OnInit {
     const userId = this.authService.userId;
     this.flightsService.bookFlight(flightId, userId).subscribe(
       res => {
-        alert(`Flight booked`)
         console.log(`Flight with id: ${flightId} booked by user: ${userId}`, res);
+        this.dialog.open(AlertDialogComponent, {
+          data: {
+            title: 'Add to History',
+            message: 'Flight added in user history!',
+          }
+        });
         this.query();
       },
-      err => console.log(err)
+      err => {
+        console.log(err);
+
+        this.dialog.open(AlertDialogComponent, {
+          data: {
+            title: 'ERROR',
+            message: 'Error occured!',
+            color: 'red'
+          }
+        });
+      }
     );
   }
 
@@ -72,8 +91,17 @@ export class FlightsComponet implements OnInit {
     this.loading = false;
   }
 
-  checkBooked(bookedBy: string[]): boolean {   
+  checkBooked(bookedBy: string[]): boolean {
     return bookedBy.some(el => el === this.authService.userId);
+  }
+
+  OnPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.flights.length) {
+      endIndex = this.flights.length
+    }
+    this.pageSlice = this.flights.slice(startIndex, endIndex)
   }
 
 }

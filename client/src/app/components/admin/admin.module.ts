@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -24,6 +25,7 @@ import { EditComponent } from './edit/edit.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatPaginatorModule
   ]
 })
 export class AdminModule { }

@@ -9,6 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ProfileComponent } from './profile/profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MyPipesModule } from 'src/app/shared/my-pipes.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -26,7 +27,8 @@ import { MyPipesModule } from 'src/app/shared/my-pipes.module';
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MyPipesModule
+    MyPipesModule,
+    MatPaginatorModule
   ]
 })
 export class UserModule { }

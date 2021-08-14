@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MyPipesModule } from './shared/my-pipes.module';
 import { ConfirmDialogComponent } from './components/dialog/confirm/confirm-dialog.component';
 import { AlertDialogComponent } from './components/dialog/alert/alert-dialog.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { AlertDialogComponent } from './components/dialog/alert/alert-dialog.com
     UserModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MyPipesModule
+    MyPipesModule,
+    MatPaginatorModule
   ],
   providers: [
     {

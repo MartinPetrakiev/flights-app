@@ -31,7 +31,6 @@
     .transparent_bg {
       background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
       height: auto;
-      min-height: 400px;
       width: 100%;
       @media screen and (max-width: 480px) {
         width: 100%;
@@ -107,6 +106,7 @@
 
         .flight_pane {
           margin-top: 10px;
+          margin-bottom: 20px;
           background-color: var(--main);
           width: 90%;
           height: 80%;

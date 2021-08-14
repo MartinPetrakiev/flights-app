@@ -27,8 +27,9 @@
                                 <div class="nonstop cell"> {{flight.nonstop | yesNo }}</div>
                             </div>
 
-                            <div>
-                            </div>
+                            <mat-paginator [length]="pastFlights.length" [pageSize]="5" [pageSizeOptions]="[5, 10]"
+                                (page)="OnPageChange($event)">
+                            </mat-paginator>
 
                         </div>
                     </mat-tab>
@@ -52,9 +53,9 @@
                                 <div class="nonstop cell"> {{flight.nonstop | yesNo }}</div>
                             </div>
 
-                            <div>
-                            </div>
-
+                            <mat-paginator [length]="upcomingFlights.length" [pageSize]="5" [pageSizeOptions]="[5, 10]"
+                                (page)="OnPageChange($event)">
+                            </mat-paginator>
                         </div>
 
                     </mat-tab>

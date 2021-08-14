@@ -35,18 +35,26 @@
                             <div *ngIf="authService.isAuthenticated" class="book cell"> Add to History </div>
                         </div>
 
+
+
                         <ng-container *ngIf="!!flights.length else noFlightsMsg">
-                            <div *ngFor="let flight of flights" class="flight_results">
+                            <div *ngFor="let flight of pageSlice" class="flight_results">
                                 <div class="flight_number cell"> {{flight.flightNumber}}</div>
                                 <div class="departs cell"> {{flight.depart | date : 'short' }}</div>
                                 <div class="arrives cell"> {{flight.arrive | date : 'short' }}</div>
                                 <div class="nonstop cell"> {{flight.nonstop | yesNo }}</div>
                                 <div *ngIf="authService.isAuthenticated" class="book_btn cell">
                                     <ng-container *ngIf="!checkBooked(flight.bookedBy!)">
-                                        <button class="book_flight_btn" (click)="book(flight._id)">Add to My Flights</button>
+                                        <button class="book_flight_btn" (click)="book(flight._id)">Add to My
+                                            Flights</button>
                                     </ng-container>
                                 </div>
                             </div>
+
+                            <mat-paginator [length]="flights.length" [pageSize]="5" [pageSizeOptions]="[5, 10]"
+                                (page)="OnPageChange($event)">
+                            </mat-paginator>
+
                         </ng-container>
 
                         <ng-template #noFlightsMsg>
