@@ -63,7 +63,7 @@ App starts on http://localhost:4200/
 
 
 ## API endpoints
-[here](https://github.com/MartinPetrakiev/Flights-App--SoftUni/tree/master/REST-API-endpoints)
+[here](https://github.com/MartinPetrakiev/Flights-App--SoftUni/blob/master/REST-API-endpoints.md)
 
 
 ##
